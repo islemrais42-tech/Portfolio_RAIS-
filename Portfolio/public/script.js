@@ -225,30 +225,19 @@ function initCounters() {
 
 /* ---- SCROLL REVEAL ---- */
 function initScrollReveal() {
-  const items = document.querySelectorAll('.stagger-item');
-
-  // Group siblings in same grid/flex parent for stagger
-  const groups = {};
-  items.forEach(el => {
-    const key = el.parentElement;
-    if (!groups[key]) groups[key] = [];
-    groups[key].push(el);
-  });
-
-  const obs = new IntersectionObserver(entries => {
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const siblings = Array.from(el.parentElement.querySelectorAll('.stagger-item'));
-        const idx = siblings.indexOf(el);
-        el.style.transitionDelay = Math.min(idx * 90, 450) + 'ms';
-        el.classList.add('visible');
-        obs.unobserve(el);
-      }
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const siblings = Array.from(el.parentElement.querySelectorAll('.stagger-item'));
+      const idx = siblings.indexOf(el);
+      el.style.transitionDelay = Math.min(idx * 90, 450) + 'ms';
+      el.classList.add('visible');
+      obs.unobserve(el);
     });
   }, { threshold: 0.1 });
 
-  items.forEach(el => obs.observe(el));
+  document.querySelectorAll('.stagger-item').forEach(el => obs.observe(el));
 }
 
 /* ---- SKILL BARS ---- */

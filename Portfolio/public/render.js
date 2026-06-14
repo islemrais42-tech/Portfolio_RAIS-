@@ -10,6 +10,7 @@
   setText('navName',        p.name);
   setText('heroFirstName',  p.name.split(' ')[0]);
   setText('heroLastName',   p.name.split(' ')[1] || '');
+  setText('heroBio1',       p.bio1);
   setText('aboutBio1',      p.bio1);
   setText('aboutBio2',      p.bio2);
   setText('acName',         p.name);
