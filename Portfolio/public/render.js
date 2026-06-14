@@ -1,5 +1,5 @@
 /**
- * render.js — Reads portfolio data and populates the page DOM
+ * render.js - Reads portfolio data and populates the page DOM
  * Called before script.js animations run
  */
 (function () {
@@ -19,7 +19,7 @@
   setText('badge1Text',     p.badge1);
   setText('badge2Text',     p.badge2);
   setText('footerName',     p.name);
-  setText('footerCopy',     `© ${new Date().getFullYear()} ${p.name} · ${p.role} · All rights reserved.`);
+  setText('footerCopy',     `\u00a9 ${new Date().getFullYear()} ${p.name} \u00b7 ${p.role} \u00b7 All rights reserved.`);
   setText('contactLocation',p.location);
 
   setLink('acLinkedin',      p.linkedin, 'islem-rais');
@@ -89,7 +89,7 @@
           <div class="tl-card-header">
             <div>
               <h3>${esc(e.title)}</h3>
-              <p class="tl-company">${esc(e.company)} &nbsp;·&nbsp; ${esc(e.type)}</p>
+              <p class="tl-company">${esc(e.company)} &nbsp;&middot;&nbsp; ${esc(e.type)}</p>
             </div>
             ${e.current ? '<span class="tl-badge current">Current</span>' : ''}
           </div>

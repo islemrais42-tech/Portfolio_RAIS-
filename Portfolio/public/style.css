@@ -1,6 +1,6 @@
 /* =====================================================
-   ISLEM RAIS — PROFESSIONAL PORTFOLIO
-   Palette: Electric Purple · Neon Cyan · Hot Pink · Deep Black
+   ISLEM RAIS - PROFESSIONAL PORTFOLIO
+   Palette: Executive blue, teal, warm gold, and deep navy
    ===================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -592,7 +592,7 @@ ul { list-style: none; }
   background-clip: text;
 }
 .exp-card h3 { font-size: 0.97rem; font-weight: 600; color: var(--white); margin-bottom: 0.7rem; line-height: 1.4; }
-.exp-card p  { font-size: 0.87rem; color: #505070; line-height: 1.7; }
+.exp-card p  { font-size: 0.87rem; color: rgba(226, 232, 240, 0.66); line-height: 1.7; }
 .exp-card-arrow {
   position: absolute; bottom: 1.5rem; right: 1.5rem;
   width: 30px; height: 30px;
@@ -742,7 +742,7 @@ ul { list-style: none; }
   display: flex; align-items: center; gap: 0.4rem;
 }
 .proj-client i { -webkit-text-fill-color: var(--purple-l); }
-.proj-result { font-size: 0.9rem; color: #505070; line-height: 1.7; margin-bottom: 1.2rem; }
+.proj-result { font-size: 0.9rem; color: rgba(226, 232, 240, 0.66); line-height: 1.7; margin-bottom: 1.2rem; }
 .proj-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .proj-tags span {
   font-size: 0.72rem; font-weight: 600;

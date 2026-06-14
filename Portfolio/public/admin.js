@@ -1,5 +1,5 @@
-/* =====================================================
-   ADMIN DASHBOARD — Islem Rais Portfolio
+﻿/* =====================================================
+   ADMIN DASHBOARD - Islem Rais Portfolio
    ===================================================== */
 
 /* ---- AUTH ---- */
@@ -96,7 +96,7 @@ function toggleSidebar() {
 /* ---- TOAST ---- */
 function showToast(msg, type = 'success') {
   const t = document.getElementById('toast');
-  t.textContent = (type === 'success' ? '✓ ' : '✗ ') + msg;
+  t.textContent = (type === 'success' ? 'Saved: ' : 'Error: ') + msg;
   t.className = 'toast show' + (type === 'error' ? ' error' : '');
   clearTimeout(t._timer);
   t._timer = setTimeout(() => { t.classList.remove('show'); }, 3000);
@@ -370,7 +370,7 @@ function expCard(e, i) {
     <div class="form-grid">
       <div class="form-group"><label>Job Title</label><input type="text" class="e-title" value="${esc(e.title)}"/></div>
       <div class="form-group"><label>Company</label><input type="text" class="e-company" value="${esc(e.company)}"/></div>
-      <div class="form-group"><label>Period (e.g. 2021 — 2023)</label><input type="text" class="e-period" value="${esc(e.period)}"/></div>
+      <div class="form-group"><label>Period (e.g. 2021 - 2023)</label><input type="text" class="e-period" value="${esc(e.period)}"/></div>
       <div class="form-group"><label>Type (e.g. Full-time)</label><input type="text" class="e-type" value="${esc(e.type)}"/></div>
       <div class="form-group span-2">
         <label class="toggle-label">

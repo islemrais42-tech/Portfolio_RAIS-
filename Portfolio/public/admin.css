@@ -1,5 +1,5 @@
 /* =====================================================
-   ADMIN DASHBOARD — Professional Palette
+   ADMIN DASHBOARD - Professional Palette
    ===================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 :root {
@@ -49,7 +49,7 @@ input, textarea, select { font-family: inherit; }
 .login-box {
   background: var(--card);
   border: 1px solid var(--border-d);
-  border-radius: 20px;
+  border-radius: var(--radius);
   padding: 3rem 2.5rem;
   width: 100%; max-width: 390px;
   text-align: center;

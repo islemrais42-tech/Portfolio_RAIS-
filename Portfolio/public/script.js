@@ -1,5 +1,5 @@
 /* =====================================================
-   DYNAMIC PORTFOLIO — Islem Rais
+   DYNAMIC PORTFOLIO - Islem Rais
    ===================================================== */
 
 /* ---- PRELOADER ---- */
@@ -322,9 +322,9 @@ function initActiveNav() {
   sections.forEach(s => obs.observe(s));
 }
 
-/* ---- CONTACT FORM → GOOGLE SHEETS ---- */
+/* ---- CONTACT FORM TO GOOGLE SHEETS ---- */
 
-// ⚠️ Replace this URL with your deployed Google Apps Script Web App URL
+// Replace this URL with your deployed Google Apps Script Web App URL.
 // See README.md for setup instructions
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzjmoKmL_Bxtys44X6bR26wCSZPOtu4C8gM5NXbNocXG_QoYK9KK4wpLvVTUzCnqJDDhg/exec';
 
@@ -363,7 +363,7 @@ async function handleSubmit(e) {
       })
     });
 
-    // no-cors means we can't read the response — treat as success
+    // no-cors means we cannot read the response, so treat completion as success.
     btn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
     btn.disabled  = false;
     success.style.display = 'block';

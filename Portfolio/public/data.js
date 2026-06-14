@@ -1,6 +1,6 @@
 /**
  * =====================================================
- *  PORTFOLIO DATA — Single source of truth
+ *  PORTFOLIO DATA - Single source of truth
  *  Edit via admin.html or directly here
  * =====================================================
  */
@@ -40,7 +40,7 @@ const PORTFOLIO_DEFAULTS = {
   tools: ['Salesforce CRM','HubSpot','Microsoft 365','Google Workspace','Slack','Zoom','Trello','Jira','Power BI'],
   experience: [
     {
-      period:  '2023 — Present',
+      period:  '2023 - Present',
       title:   'Account Management Lead',
       company: 'Confidential Portfolio',
       type:    'Full-time',
@@ -54,7 +54,7 @@ const PORTFOLIO_DEFAULTS = {
       tags: ['Account Strategy','Client Retention','Stakeholder Management']
     },
     {
-      period:  '2021 — 2023',
+      period:  '2021 - 2023',
       title:   'Client Success & Growth Manager',
       company: 'Private Sector',
       type:    'Full-time',
@@ -68,7 +68,7 @@ const PORTFOLIO_DEFAULTS = {
       tags: ['Client Success','Account Growth','Cross-functional Delivery']
     },
     {
-      period:  '2019 — 2021',
+      period:  '2019 - 2021',
       title:   'Sales & Relationship Associate',
       company: 'Business Development Team',
       type:    'Full-time',
@@ -118,7 +118,7 @@ const PORTFOLIO_DEFAULTS = {
 };
 
 /**
- * Safe storage wrapper — works even when blocked by Edge Tracking
+ * Safe storage wrapper - works even when blocked by Edge Tracking
  * Prevention on file:// (uses in-memory fallback silently)
  */
 function _makeStore(storageKey) {
