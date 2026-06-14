@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Islem Rais | Account Manager & Client Success Professional</title>
+  <meta name="description" content="Professional portfolio for Islem Rais, an account manager focused on client success, retention, stakeholder management, and revenue growth." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="stylesheet" href="fonts/fa-all.min.css" />
+</head>
+<body class="loading">
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">IR</div>
+      <div class="preloader-bar"><div class="preloader-fill" id="preloaderFill"></div></div>
+      <p class="preloader-text" id="preloaderText">Loading...</p>
+    </div>
+  </div>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="nav-brand">
+      <span class="brand-initials">IR</span>
+      <span class="brand-name" id="navName">Islem Rais</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Me</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-noise"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="dot-pulse"></span>
+        <span id="heroAvailText">Available for new opportunities</span>
+      </div>
+      <div class="hero-title-wrap">
+        <h1 class="hero-title">
+          <span id="heroFirstName">Islem</span>
+          <span class="grad" id="heroLastName">Rais</span>
+        </h1>
+      </div>
+      <div class="hero-role-wrap">
+        <span class="hero-role-text" id="typedRole"></span>
+        <span class="type-cursor" aria-hidden="true">|</span>
+      </div>
+      <p class="hero-desc" id="heroBio1">Driving client success and sustainable revenue growth through strategic relationship management and data-informed account development.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="cta-primary magnetic">
+          <span>Let's Connect</span>
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a href="#experience" class="cta-secondary magnetic">
+          <span>View Experience</span>
+        </a>
+      </div>
+      <div class="hero-stats" id="heroStats"><!-- rendered by JS --></div>
+    </div>
+    <aside class="hero-profile-panel" aria-label="Professional focus">
+      <div class="panel-kicker">Professional Focus</div>
+      <div class="panel-metric">
+        <span>01</span>
+        <strong>Account Health</strong>
+        <p>Structured follow-up, renewal readiness, and client risk visibility.</p>
+      </div>
+      <div class="panel-metric">
+        <span>02</span>
+        <strong>Growth Planning</strong>
+        <p>Opportunity mapping, stakeholder alignment, and clear next actions.</p>
+      </div>
+      <div class="panel-metric">
+        <span>03</span>
+        <strong>Executive Communication</strong>
+        <p>Concise updates, business reviews, and outcome-focused reporting.</p>
+      </div>
+    </aside>
+    <div class="hero-scroll-hint">
+      <div class="mouse-icon"><div class="mouse-dot"></div></div>
+      <span>Scroll Down</span>
+    </div>
+    <div class="hero-line-left"></div>
+    <div class="hero-line-right"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual stagger-item">
+          <div class="about-card-3d" id="aboutCard">
+            <div class="ac-front">
+              <div class="ac-avatar">IR</div>
+              <h3 id="acName">Islem Rais</h3>
+              <p id="acRole">Account Manager</p>
+              <div class="ac-divider"></div>
+              <div class="ac-row"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span id="acLocation">Algeria</span></div>
+              <div class="ac-row"><i class="fab fa-linkedin" aria-hidden="true"></i>
+                <a id="acLinkedin" href="https://www.linkedin.com/in/islem-rais" target="_blank">islem-rais</a>
+              </div>
+              <div class="ac-row available-row" id="acAvailRow">
+                <span class="green-dot"></span> Open to opportunities
+              </div>
+            </div>
+          </div>
+          <div class="floating-badge badge-1 float-anim">
+            <i class="fas fa-trophy" aria-hidden="true"></i> <span id="badge1Text">Top Performer 2024</span>
+          </div>
+          <div class="floating-badge badge-2 float-anim-2">
+            <i class="fas fa-star" aria-hidden="true"></i> <span id="badge2Text">95% Retention</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <div class="section-label stagger-item">About Me</div>
+          <h2 class="section-title stagger-item">Turning Client <br><em>Relationships</em> Into<br>Business Results</h2>
+          <p class="stagger-item" id="aboutBio1"></p>
+          <p class="stagger-item" id="aboutBio2"></p>
+          <div class="about-skills stagger-item" id="skillBars"><!-- rendered by JS --></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="section section-dark" id="expertise">
+    <div class="container">
+      <div class="section-head stagger-item">
+        <div class="section-label light">Core Expertise</div>
+        <h2 class="section-title light">What I Bring <em>to the Table</em></h2>
+      </div>
+      <div class="expertise-grid" id="expertiseGrid"><!-- rendered by JS --></div>
+      <div class="tools-marquee-wrap stagger-item">
+        <div class="marquee-label">Tools & Platforms</div>
+        <div class="marquee-track">
+          <div class="marquee-inner" id="marqueeInner"><!-- rendered by JS --></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-head stagger-item">
+        <div class="section-label">Career Journey</div>
+        <h2 class="section-title">Professional <em>Experience</em></h2>
+      </div>
+      <div class="timeline" id="experienceList"><!-- rendered by JS --></div>
+
+      <div class="section-head stagger-item" style="margin-top:5rem">
+        <div class="section-label">Education</div>
+        <h2 class="section-title">Academic <em>Background</em></h2>
+      </div>
+      <div class="timeline" id="educationList"><!-- rendered by JS --></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section section-dark" id="projects">
+    <div class="container">
+      <div class="section-head stagger-item">
+        <div class="section-label light">Portfolio</div>
+        <h2 class="section-title light">Featured <em>Projects</em></h2>
+      </div>
+      <div class="projects-grid" id="projectsGrid"><!-- rendered by JS --></div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section" id="achievements">
+    <div class="container">
+      <div class="section-head stagger-item">
+        <div class="section-label">Recognition</div>
+        <h2 class="section-title">Key <em>Achievements</em></h2>
+      </div>
+      <div class="ach-grid" id="achGrid"><!-- rendered by JS --></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-dark" id="contact">
+    <div class="container">
+      <div class="section-head stagger-item">
+        <div class="section-label light">Let's Talk</div>
+        <h2 class="section-title light">Start a <em>Conversation</em></h2>
+        <p class="section-sub">Open to new opportunities, strategic partnerships, and professional conversations.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info stagger-item">
+          <div class="contact-card">
+            <div class="cc-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+            <div>
+              <p class="cc-label">Email</p>
+              <a id="contactEmail" href="#contact">Use the contact form</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon"><i class="fab fa-linkedin" aria-hidden="true"></i></div>
+            <div>
+              <p class="cc-label">LinkedIn</p>
+              <a id="contactLinkedin" href="https://www.linkedin.com/in/islem-rais" target="_blank">linkedin.com/in/islem-rais</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
+            <div>
+              <p class="cc-label">Location</p>
+              <span id="contactLocation">Algeria</span>
+            </div>
+          </div>
+          <div class="contact-availability">
+            <span class="green-dot"></span>
+            <p>Currently open to full-time and consulting opportunities.</p>
+          </div>
+        </div>
+        <form class="contact-form stagger-item" onsubmit="handleSubmit(event)">
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="cf-name">Full Name</label>
+              <div class="cf-input-wrap">
+                <input id="cf-name" name="name" type="text" placeholder="John Smith" required autocomplete="name" />
+                <span class="cf-focus-bar"></span>
+              </div>
+            </div>
+            <div class="cf-field">
+              <label for="cf-email">Email Address</label>
+              <div class="cf-input-wrap">
+                <input id="cf-email" name="email" type="email" placeholder="john@company.com" required autocomplete="email" />
+                <span class="cf-focus-bar"></span>
+              </div>
+            </div>
+          </div>
+          <div class="cf-field">
+            <label for="cf-subject">Subject</label>
+            <div class="cf-input-wrap">
+              <input id="cf-subject" name="subject" type="text" placeholder="Professional inquiry" />
+              <span class="cf-focus-bar"></span>
+            </div>
+          </div>
+          <div class="cf-field">
+            <label for="cf-message">Message</label>
+            <div class="cf-input-wrap">
+              <textarea id="cf-message" name="message" rows="5" placeholder="Share the opportunity, context, and best way to follow up..." required></textarea>
+              <span class="cf-focus-bar"></span>
+            </div>
+          </div>
+          <button type="submit" class="cf-submit magnetic">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+          </button>
+          <p class="cf-success" id="cfSuccess"><i class="fas fa-check-circle" aria-hidden="true"></i> Thanks, your message was submitted.</p>
+          <p class="cf-error"   id="cfError"><i class="fas fa-exclamation-circle" aria-hidden="true"></i> Something went wrong. Please email me directly.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand" id="footerName">Islem Rais</div>
+        <nav class="footer-nav">
+          <a href="#about">About</a>
+          <a href="#expertise">Expertise</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer-socials">
+          <a id="footerLinkedin" href="https://www.linkedin.com/in/islem-rais" target="_blank" class="magnetic" aria-label="LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          <a id="footerEmail" href="#contact" class="magnetic" aria-label="Go to contact form"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p id="footerCopy">© 2026 Islem Rais · Account Manager · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="render.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Local Content Editor | Islem Rais Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="stylesheet" href="fonts/fa-all.min.css"/>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body class="locked">
+
+  <!-- LOGIN SCREEN -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-box">
+      <div class="login-logo">IR</div>
+      <h1>Local Content Editor</h1>
+      <p>Edit portfolio content stored in this browser.</p>
+      <form onsubmit="doLogin(event)">
+        <div class="login-field">
+          <input id="loginPass" type="password" placeholder="Password" autocomplete="current-password" required/>
+          <button type="button" class="toggle-pass" onclick="togglePass()" aria-label="Show password">
+            <i class="fas fa-eye" id="passEyeIcon"></i>
+          </button>
+        </div>
+        <p class="login-note" id="loginNote"></p>
+        <p class="login-error" id="loginError"></p>
+        <button type="submit" class="login-btn">Sign In <i class="fas fa-arrow-right"></i></button>
+      </form>
+      <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboard" style="display:none">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sb-brand">
+        <div class="sb-logo">IR</div>
+        <div>
+          <div class="sb-title">Content Editor</div>
+          <div class="sb-sub">Local Portfolio Manager</div>
+        </div>
+      </div>
+      <nav class="sb-nav">
+        <a href="#" class="sb-link active" data-tab="profile"      onclick="switchTab(this,'profile')">      <i class="fas fa-user"></i>       Profile</a>
+        <a href="#" class="sb-link"        data-tab="stats"        onclick="switchTab(this,'stats')">        <i class="fas fa-chart-bar"></i>  Stats</a>
+        <a href="#" class="sb-link"        data-tab="skills"       onclick="switchTab(this,'skills')">       <i class="fas fa-star"></i>       Skills</a>
+        <a href="#" class="sb-link"        data-tab="expertise"    onclick="switchTab(this,'expertise')">    <i class="fas fa-handshake"></i>  Expertise</a>
+        <a href="#" class="sb-link"        data-tab="tools"        onclick="switchTab(this,'tools')">        <i class="fas fa-tools"></i>      Tools</a>
+        <a href="#" class="sb-link"        data-tab="experience"   onclick="switchTab(this,'experience')">   <i class="fas fa-briefcase"></i>  Experience</a>
+        <a href="#" class="sb-link"        data-tab="education"    onclick="switchTab(this,'education')">    <i class="fas fa-graduation-cap"></i> Education</a>
+        <a href="#" class="sb-link"        data-tab="projects"     onclick="switchTab(this,'projects')">     <i class="fas fa-rocket"></i>     Projects</a>
+        <a href="#" class="sb-link"        data-tab="achievements" onclick="switchTab(this,'achievements')"> <i class="fas fa-trophy"></i>     Achievements</a>
+        <a href="#" class="sb-link"        data-tab="password"     onclick="switchTab(this,'password')">     <i class="fas fa-lock"></i>       Password</a>
+      </nav>
+      <div class="sb-footer">
+        <a href="index.html" target="_blank" class="sb-preview"><i class="fas fa-external-link-alt"></i> View Portfolio</a>
+        <button onclick="doLogout()" class="sb-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+      <div class="topbar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="topbar-title" id="topbarTitle">Profile</div>
+        <div class="topbar-actions">
+          <button class="btn-reset" onclick="confirmReset()"><i class="fas fa-undo"></i> Reset All</button>
+          <button class="btn-save"  onclick="saveAll()"><i class="fas fa-save"></i> Save Changes</button>
+        </div>
+      </div>
+
+      <div class="toast" id="toast"></div>
+      <div class="editor-notice">
+        <i class="fas fa-circle-info" aria-hidden="true"></i>
+        <span>Local editor: saved changes are stored in this browser. Update <strong>data.js</strong> for permanent deployment content.</span>
+      </div>
+
+      <!-- ===== PROFILE TAB ===== -->
+      <div class="tab-panel active" id="tab-profile">
+        <div class="panel-header"><h2>Profile Information</h2><p>Your personal details shown across the portfolio.</p></div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="p-name" placeholder="Islem Rais"/>
+          </div>
+          <div class="form-group">
+            <label>Job Title / Role</label>
+            <input type="text" id="p-role" placeholder="Account Manager"/>
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" id="p-location" placeholder="Algeria"/>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="p-email" placeholder="your@email.com"/>
+          </div>
+          <div class="form-group span-2">
+            <label>LinkedIn URL</label>
+            <input type="url" id="p-linkedin" placeholder="https://www.linkedin.com/in/..."/>
+          </div>
+          <div class="form-group span-2">
+            <label>Bio — Paragraph 1</label>
+            <textarea id="p-bio1" rows="3" placeholder="First paragraph of your about section..."></textarea>
+          </div>
+          <div class="form-group span-2">
+            <label>Bio — Paragraph 2</label>
+            <textarea id="p-bio2" rows="3" placeholder="Second paragraph of your about section..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Floating Badge 1</label>
+            <input type="text" id="p-badge1" placeholder="Top Performer 2024"/>
+          </div>
+          <div class="form-group">
+            <label>Floating Badge 2</label>
+            <input type="text" id="p-badge2" placeholder="95% Retention"/>
+          </div>
+          <div class="form-group span-2">
+            <label class="toggle-label">
+              <input type="checkbox" id="p-available"/>
+              <span>Show "Available for opportunities" badge</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== STATS TAB ===== -->
+      <div class="tab-panel" id="tab-stats">
+        <div class="panel-header"><h2>Hero Statistics</h2><p>The four numbers displayed in the hero section.</p></div>
+        <div id="statsEditor"></div>
+        <button class="btn-add" onclick="addStat()"><i class="fas fa-plus"></i> Add Stat</button>
+      </div>
+
+      <!-- ===== SKILLS TAB ===== -->
+      <div class="tab-panel" id="tab-skills">
+        <div class="panel-header"><h2>Skill Bars</h2><p>Skills shown in the About section with progress bars.</p></div>
+        <div id="skillsEditor"></div>
+        <button class="btn-add" onclick="addSkill()"><i class="fas fa-plus"></i> Add Skill</button>
+      </div>
+
+      <!-- ===== EXPERTISE TAB ===== -->
+      <div class="tab-panel" id="tab-expertise">
+        <div class="panel-header"><h2>Core Expertise</h2><p>The six service cards in the Expertise section.</p></div>
+        <div id="expertiseEditor"></div>
+        <button class="btn-add" onclick="addExpertise()"><i class="fas fa-plus"></i> Add Card</button>
+      </div>
+
+      <!-- ===== TOOLS TAB ===== -->
+      <div class="tab-panel" id="tab-tools">
+        <div class="panel-header"><h2>Tools & Platforms</h2><p>The scrolling marquee of tools shown below expertise.</p></div>
+        <div id="toolsEditor"></div>
+        <button class="btn-add" onclick="addTool()"><i class="fas fa-plus"></i> Add Tool</button>
+      </div>
+
+      <!-- ===== EXPERIENCE TAB ===== -->
+      <div class="tab-panel" id="tab-experience">
+        <div class="panel-header"><h2>Work Experience</h2><p>Your career timeline entries.</p></div>
+        <div id="expEditor"></div>
+        <button class="btn-add" onclick="addExp()"><i class="fas fa-plus"></i> Add Position</button>
+      </div>
+
+      <!-- ===== EDUCATION TAB ===== -->
+      <div class="tab-panel" id="tab-education">
+        <div class="panel-header"><h2>Education</h2><p>Your academic background entries.</p></div>
+        <div id="eduEditor"></div>
+        <button class="btn-add" onclick="addEdu()"><i class="fas fa-plus"></i> Add Degree</button>
+      </div>
+
+      <!-- ===== PROJECTS TAB ===== -->
+      <div class="tab-panel" id="tab-projects">
+        <div class="panel-header"><h2>Featured Projects</h2><p>Projects shown in the Portfolio section.</p></div>
+        <div id="projEditor"></div>
+        <button class="btn-add" onclick="addProj()"><i class="fas fa-plus"></i> Add Project</button>
+      </div>
+
+      <!-- ===== ACHIEVEMENTS TAB ===== -->
+      <div class="tab-panel" id="tab-achievements">
+        <div class="panel-header"><h2>Achievements</h2><p>Your key accomplishments and recognition.</p></div>
+        <div id="achEditor"></div>
+        <button class="btn-add" onclick="addAch()"><i class="fas fa-plus"></i> Add Achievement</button>
+      </div>
+
+      <!-- ===== PASSWORD TAB ===== -->
+      <div class="tab-panel" id="tab-password">
+        <div class="panel-header"><h2>Change Password</h2><p>Update the admin dashboard password.</p></div>
+        <div class="form-grid" style="max-width:440px">
+          <div class="form-group span-2">
+            <label>Current Password</label>
+            <input type="password" id="pw-current" placeholder="Current password"/>
+          </div>
+          <div class="form-group span-2">
+            <label>New Password</label>
+            <input type="password" id="pw-new" placeholder="New password (min 6 chars)"/>
+          </div>
+          <div class="form-group span-2">
+            <label>Confirm New Password</label>
+            <input type="password" id="pw-confirm" placeholder="Confirm new password"/>
+          </div>
+          <div class="form-group span-2">
+            <button class="btn-save" onclick="changePassword()"><i class="fas fa-lock"></i> Update Password</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
