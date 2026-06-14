@@ -30,11 +30,11 @@ function doLogin(e) {
 }
 
 function finishLogin() {
-    _session.set('adminAuth', '1');
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'flex';
-    document.body.classList.remove('locked');
-    loadAll();
+  _session.set('adminAuth', '1');
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'flex';
+  document.body.classList.remove('locked');
+  loadAll();
 }
 
 function showLoginError(message) {
@@ -178,9 +178,7 @@ function collectProfile() {
    STATS
    ===================================================== */
 function loadStats() {
-  const c = document.getElementById('statsEditor');
-  c.innerHTML = '';
-  D.stats.forEach((s, i) => c.appendChild(statCard(s, i)));
+  renderCards('statsEditor', D.stats, statCard);
 }
 
 function statCard(s, i) {
@@ -221,9 +219,7 @@ function collectStats() {
    SKILLS
    ===================================================== */
 function loadSkills() {
-  const c = document.getElementById('skillsEditor');
-  c.innerHTML = '';
-  D.skills.forEach((s, i) => c.appendChild(skillCard(s, i)));
+  renderCards('skillsEditor', D.skills, skillCard);
 }
 
 function skillCard(s, i) {
@@ -273,9 +269,7 @@ const FA_ICONS = [
 ];
 
 function loadExpertise() {
-  const c = document.getElementById('expertiseEditor');
-  c.innerHTML = '';
-  D.expertise.forEach((x, i) => c.appendChild(expertCard(x, i)));
+  renderCards('expertiseEditor', D.expertise, expertCard);
 }
 
 function expertCard(x, i) {
@@ -319,7 +313,7 @@ function collectExpertise() {
    ===================================================== */
 function loadTools() {
   const c = document.getElementById('toolsEditor');
-  c.innerHTML = '';
+  const fragment = document.createDocumentFragment();
   D.tools.forEach((t, i) => {
     const div = document.createElement('div');
     div.className = 'item-card';
@@ -333,8 +327,9 @@ function loadTools() {
         </div>
       </div>
       <div class="form-group"><label>Tool Name</label><input type="text" class="t-name" value="${esc(t)}"/></div>`;
-    c.appendChild(div);
+    fragment.appendChild(div);
   });
+  c.replaceChildren(fragment);
 }
 
 function addTool() {
@@ -350,9 +345,7 @@ function collectTools() {
    EXPERIENCE
    ===================================================== */
 function loadExperience() {
-  const c = document.getElementById('expEditor');
-  c.innerHTML = '';
-  D.experience.forEach((e, i) => c.appendChild(expCard(e, i)));
+  renderCards('expEditor', D.experience, expCard);
 }
 
 function expCard(e, i) {
@@ -411,9 +404,7 @@ function collectExperience() {
    EDUCATION
    ===================================================== */
 function loadEducation() {
-  const c = document.getElementById('eduEditor');
-  c.innerHTML = '';
-  D.education.forEach((e, i) => c.appendChild(eduCard(e, i)));
+  renderCards('eduEditor', D.education, eduCard);
 }
 
 function eduCard(e, i) {
@@ -455,9 +446,7 @@ function collectEducation() {
    PROJECTS
    ===================================================== */
 function loadProjects() {
-  const c = document.getElementById('projEditor');
-  c.innerHTML = '';
-  D.projects.forEach((p, i) => c.appendChild(projCard(p, i)));
+  renderCards('projEditor', D.projects, projCard);
 }
 
 function projCard(p, i) {
@@ -499,9 +488,7 @@ function collectProjects() {
    ACHIEVEMENTS
    ===================================================== */
 function loadAchievements() {
-  const c = document.getElementById('achEditor');
-  c.innerHTML = '';
-  D.achievements.forEach((a, i) => c.appendChild(achCard(a, i)));
+  renderCards('achEditor', D.achievements, achCard);
 }
 
 function achCard(a, i) {
@@ -583,6 +570,14 @@ function loadSection(key) {
     projects: loadProjects, achievements: loadAchievements
   };
   if (map[key]) map[key]();
+}
+
+function renderCards(containerId, items, factory) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const fragment = document.createDocumentFragment();
+  items.forEach((item, index) => fragment.appendChild(factory(item, index)));
+  container.replaceChildren(fragment);
 }
 
 function val(id, v) { const e = document.getElementById(id); if (e) e.value = v || ''; }

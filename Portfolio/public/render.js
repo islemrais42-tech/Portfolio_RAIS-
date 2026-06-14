@@ -7,9 +7,10 @@
 
   /* ---- PROFILE ---- */
   const p = d.profile;
+  const nameParts = p.name.trim().split(/\s+/);
   setText('navName',        p.name);
-  setText('heroFirstName',  p.name.split(' ')[0]);
-  setText('heroLastName',   p.name.split(' ')[1] || '');
+  setText('heroFirstName',  nameParts[0] || p.name);
+  setText('heroLastName',   nameParts.slice(1).join(' '));
   setText('heroBio1',       p.bio1);
   setText('aboutBio1',      p.bio1);
   setText('aboutBio2',      p.bio2);
@@ -22,8 +23,8 @@
   setText('footerCopy',     `\u00a9 ${new Date().getFullYear()} ${p.name} \u00b7 ${p.role} \u00b7 All rights reserved.`);
   setText('contactLocation',p.location);
 
-  setLink('acLinkedin',      p.linkedin, 'islem-rais');
-  setLink('contactLinkedin', p.linkedin, p.linkedin.replace('https://www.',''));
+  setLink('acLinkedin',      p.linkedin, formatLinkedIn(p.linkedin));
+  setLink('contactLinkedin', p.linkedin, formatLinkedIn(p.linkedin, true));
   setLink('footerLinkedin',  p.linkedin);
   const emailHref = p.email ? 'mailto:' + p.email : '#contact';
   setLink('contactEmail', emailHref, p.email || 'Use the contact form');
@@ -38,8 +39,8 @@
     statsEl.innerHTML = d.stats.map((s, i) => `
       ${i > 0 ? '<div class="h-divider"></div>' : ''}
       <div class="h-stat">
-        <span class="h-stat-n" data-target="${s.value}">0</span><span class="h-stat-n">${s.suffix}</span>
-        <span class="h-stat-l">${s.label}</span>
+        <span class="h-stat-n" data-target="${Number(s.value) || 0}">0</span><span class="h-stat-n">${esc(s.suffix)}</span>
+        <span class="h-stat-l">${esc(s.label)}</span>
       </div>`).join('');
   }
 
@@ -64,7 +65,7 @@
       <div class="exp-card stagger-item" data-tilt>
         <div class="exp-card-glow"></div>
         <div class="exp-card-num">${String(i+1).padStart(2,'0')}</div>
-        <div class="exp-card-icon"><i class="fas ${x.icon}" aria-hidden="true"></i></div>
+        <div class="exp-card-icon"><i class="fas ${escClass(x.icon)}" aria-hidden="true"></i></div>
         <h3>${esc(x.title)}</h3>
         <p>${esc(x.desc)}</p>
         <div class="exp-card-arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
@@ -140,7 +141,7 @@
     achEl.innerHTML = d.achievements.map((a, i) => `
       <div class="ach-card stagger-item" data-tilt>
         <div class="ach-number">${String(i+1).padStart(2,'0')}</div>
-        <i class="fas ${a.icon} ach-icon" aria-hidden="true"></i>
+        <i class="fas ${escClass(a.icon)} ach-icon" aria-hidden="true"></i>
         <h3>${esc(a.title)}</h3>
         <p>${esc(a.desc)}</p>
       </div>`).join('');
@@ -152,8 +153,19 @@
   function setLink(id, href, text) {
     const e = el(id);
     if (!e) return;
-    e.href = href;
+    e.href = href || '#contact';
     if (text) e.textContent = text;
+  }
+  function formatLinkedIn(url, full) {
+    if (!url) return full ? 'LinkedIn profile' : 'LinkedIn';
+    const display = url
+      .replace(/^https?:\/\//, '')
+      .replace(/^www\./, '')
+      .replace(/\/$/, '');
+    return full ? display : display.split('/').filter(Boolean).pop() || 'LinkedIn';
+  }
+  function escClass(str) {
+    return String(str || '').replace(/[^a-zA-Z0-9_-]/g, '');
   }
   function esc(str) {
     return String(str)

@@ -48,19 +48,26 @@ function initAll() {
 function initCursor() {
   const cursor = document.getElementById('cursor');
   const follower = document.getElementById('cursorFollower');
+  if (!cursor || !follower || !window.matchMedia('(pointer: fine)').matches) return;
+
   let fx = 0, fy = 0, cx = 0, cy = 0;
+  let isMoving = false;
 
   document.addEventListener('mousemove', e => {
     cx = e.clientX; cy = e.clientY;
     cursor.style.left = cx + 'px';
     cursor.style.top  = cy + 'px';
-  });
+    isMoving = true;
+  }, { passive: true });
 
   (function animFollower() {
-    fx += (cx - fx) * 0.12;
-    fy += (cy - fy) * 0.12;
-    follower.style.left = fx + 'px';
-    follower.style.top  = fy + 'px';
+    if (isMoving) {
+      fx += (cx - fx) * 0.12;
+      fy += (cy - fy) * 0.12;
+      follower.style.left = fx + 'px';
+      follower.style.top  = fy + 'px';
+      isMoving = Math.abs(cx - fx) > 0.2 || Math.abs(cy - fy) > 0.2;
+    }
     requestAnimationFrame(animFollower);
   })();
 
@@ -79,15 +86,24 @@ function initCursor() {
 /* ---- NAVBAR ---- */
 function initNavbar() {
   const navbar = document.getElementById('navbar');
+  if (!navbar) return;
+  let ticking = false;
+
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-  });
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+      ticking = false;
+    });
+  }, { passive: true });
 }
 
 /* ---- MOBILE MENU ---- */
 function initMobileMenu() {
   const btn   = document.getElementById('hamburger');
   const links = document.getElementById('navLinks');
+  if (!btn || !links) return;
 
   btn.addEventListener('click', () => {
     btn.classList.toggle('open');
@@ -105,18 +121,25 @@ function initMobileMenu() {
 /* ---- PARTICLES ---- */
 function initHeroParticles() {
   const canvas = document.getElementById('particleCanvas');
+  if (!canvas) return;
   const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
   let W, H, particles = [];
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+    canvas.width = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   resize();
-  window.addEventListener('resize', () => { resize(); createParticles(); });
+  window.addEventListener('resize', debounce(() => { resize(); createParticles(); }, 150), { passive: true });
 
   function createParticles() {
-    const count = Math.floor((W * H) / 14000);
+    const count = reduceMotion ? 0 : Math.min(95, Math.floor((W * H) / 18000));
     particles = Array.from({ length: count }, () => ({
       x: Math.random() * W,
       y: Math.random() * H,
@@ -133,7 +156,7 @@ function initHeroParticles() {
     const r = canvas.getBoundingClientRect();
     mouseX = e.clientX - r.left;
     mouseY = e.clientY - r.top;
-  });
+  }, { passive: true });
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
@@ -184,6 +207,7 @@ function initHeroParticles() {
 /* ---- TYPED TEXT ---- */
 function initTyped() {
   const el = document.getElementById('typedRole');
+  if (!el) return;
   const roles = ['Account Manager', 'Client Success Partner', 'Retention & Growth Strategist', 'Stakeholder Relationship Lead'];
   let ri = 0, ci = 0, deleting = false;
 
@@ -204,6 +228,8 @@ function initTyped() {
 /* ---- COUNTERS ---- */
 function initCounters() {
   const targets = document.querySelectorAll('[data-target]');
+  if (!targets.length) return;
+
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -225,6 +251,9 @@ function initCounters() {
 
 /* ---- SCROLL REVEAL ---- */
 function initScrollReveal() {
+  const items = document.querySelectorAll('.stagger-item');
+  if (!items.length) return;
+
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -237,12 +266,14 @@ function initScrollReveal() {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.stagger-item').forEach(el => obs.observe(el));
+  items.forEach(el => obs.observe(el));
 }
 
 /* ---- SKILL BARS ---- */
 function initSkillBars() {
   const bars = document.querySelectorAll('.skill-bar-fill');
+  if (!bars.length) return;
+
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -256,6 +287,8 @@ function initSkillBars() {
 
 /* ---- TILT EFFECT ---- */
 function initTilt() {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
   document.querySelectorAll('[data-tilt]').forEach(card => {
     card.addEventListener('mousemove', e => {
       const r   = card.getBoundingClientRect();
@@ -273,6 +306,8 @@ function initTilt() {
 
 /* ---- MAGNETIC BUTTONS ---- */
 function initMagnetic() {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
   // Only apply to .magnetic elements that are NOT [data-tilt] cards
   document.querySelectorAll('.magnetic:not([data-tilt])').forEach(el => {
     el.addEventListener('mousemove', e => {
@@ -290,7 +325,7 @@ function initMagnetic() {
 /* ---- 3D CARD MOUSE TRACKING ---- */
 function init3DCard() {
   const card = document.getElementById('aboutCard');
-  if (!card) return;
+  if (!card || !window.matchMedia('(pointer: fine)').matches) return;
   card.addEventListener('mousemove', e => {
     const r  = card.getBoundingClientRect();
     const cx = r.left + r.width  / 2;
@@ -308,6 +343,7 @@ function init3DCard() {
 function initActiveNav() {
   const sections   = document.querySelectorAll('section[id]');
   const navAnchors = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+  if (!sections.length || !navAnchors.length) return;
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -320,6 +356,14 @@ function initActiveNav() {
   }, { rootMargin: '-40% 0px -55% 0px' });
 
   sections.forEach(s => obs.observe(s));
+}
+
+function debounce(fn, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
 }
 
 /* ---- CONTACT FORM TO GOOGLE SHEETS ---- */

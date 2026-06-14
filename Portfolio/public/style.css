@@ -2,8 +2,6 @@
    ISLEM RAIS - PROFESSIONAL PORTFOLIO
    Palette: Executive blue, teal, warm gold, and deep navy
    ===================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
-
 :root {
   --purple:     #1d4ed8;
   --purple-l:   #60a5fa;
@@ -421,6 +419,11 @@ ul { list-style: none; }
 /* =====================================================
    SECTION COMMONS
    ===================================================== */
+.section,
+.section-dark {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
 .section      { padding: 8rem 5%; background: var(--light); }
 .section-dark { padding: 8rem 5%; background: var(--dark-2); }
 .container    { max-width: 1100px; margin: 0 auto; }
@@ -993,4 +996,19 @@ ul { list-style: none; }
   .hero { padding: 7rem 5% 5rem; }
   .contact-form { padding: 2rem 1.5rem; }
   .tl-item { padding-left: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .marquee-inner {
+    animation: none !important;
+  }
 }
