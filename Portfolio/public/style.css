@@ -868,14 +868,10 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
   left: -1rem;
 }
 .float-anim {
-  animation: float-badge 4s ease-in-out infinite;
+  animation: none;
 }
 .float-anim-2 {
-  animation: float-badge 4s ease-in-out 2s infinite;
-}
-@keyframes float-badge {
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
+  animation: none;
 }
 
 .about-text {
