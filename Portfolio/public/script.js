@@ -579,30 +579,39 @@ async function handleSubmit(e) {
       throw new Error('Contact endpoint is not configured.');
     }
 
-    // Send to Google Sheets via Apps Script
-    await fetch(APPS_SCRIPT_URL, {
+    // Create abort controller with 8 second timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+    // Send to Google Sheets via Apps Script with optimizations
+    const response = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       mode:   'no-cors',          // Apps Script requires no-cors
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name, email, subject, message,
         timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Africa/Algiers' })
-      })
+      }),
+      signal: controller.signal,
+      keepalive: true             // Keep connection alive for faster subsequent requests
     });
+
+    clearTimeout(timeoutId);
 
     // no-cors means we cannot read the response, so treat completion as success.
     btn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
     btn.disabled  = false;
     success.style.display = 'block';
     form.reset();
-    setTimeout(() => { success.style.display = 'none'; }, 6000);
+    setTimeout(() => { success.style.display = 'none'; }, 3500);  // Reduced from 6000 to 3500ms
 
   } catch (err) {
     btn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
     btn.disabled  = false;
     if (errorEl) {
       errorEl.style.display = 'block';
-      setTimeout(() => { errorEl.style.display = 'none'; }, 6000);
+      setTimeout(() => { errorEl.style.display = 'none'; }, 3500);  // Reduced from 6000 to 3500ms
     }
+    console.error('Form submission error:', err.message);
   }
 }
