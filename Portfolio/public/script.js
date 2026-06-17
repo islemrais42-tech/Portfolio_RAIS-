@@ -392,6 +392,9 @@ function debounce(fn, delay) {
 
 /* ---- SCROLL PROGRESS BAR ---- */
 function initScrollProgressBar() {
+  // Skip on mobile to improve scrolling performance
+  if (window.innerWidth < 768) return;
+  
   let progressBar = document.getElementById('scrollProgressBar');
   if (!progressBar) {
     progressBar = document.createElement('div');
@@ -405,26 +408,50 @@ function initScrollProgressBar() {
     document.body.appendChild(progressBar);
   }
   
-  window.addEventListener('scroll', debounce(() => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = (scrollTop / docHeight) * 100;
-    progressBar.style.width = scrolled + '%';
-  }, 10), { passive: true });
+  let ticking = false;
+  
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrolled + '%';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 }
 
 /* ---- PARALLAX SCROLLING ---- */
 function initParallaxElements() {
+  // Disable parallax on mobile devices to improve scrolling performance
+  const isMobile = window.innerWidth < 768 || window.matchMedia('(hover: none)').matches;
+  if (isMobile) return;  // Skip parallax on mobile
+  
   const parallaxElements = document.querySelectorAll('[data-parallax]');
   if (!parallaxElements.length) return;
   
-  window.addEventListener('scroll', debounce(() => {
-    parallaxElements.forEach(el => {
-      const speed = el.getAttribute('data-parallax') || 0.5;
-      const yPos = window.scrollY * speed;
-      el.style.transform = `translateY(${yPos}px)`;
-    });
-  }, 10), { passive: true });
+  // Check if user prefers reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;  // Skip if user prefers reduced motion
+  
+  let ticking = false;
+  
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        parallaxElements.forEach(el => {
+          const speed = parseFloat(el.getAttribute('data-parallax')) || 0.5;
+          const yPos = window.scrollY * speed;
+          el.style.transform = `translateY(${yPos}px)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 }
 
 /* ---- FLOATING ANIMATED ELEMENTS ---- */

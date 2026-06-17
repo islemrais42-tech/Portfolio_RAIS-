@@ -2060,6 +2060,141 @@ h1, h2, h3, .section-title {
 }
 
 /* =====================================================
+   MOBILE SCROLL OPTIMIZATION
+   ===================================================== */
+
+/* Disable expensive animations on mobile during scroll */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Use GPU acceleration for smooth scrolling */
+  body, html {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-perspective: 1000;
+    perspective: 1000;
+  }
+  
+  /* Disable parallax on mobile */
+  [data-parallax] {
+    transform: none !important;
+  }
+  
+  /* Optimize heavy animations */
+  .marquee-inner {
+    animation: marquee-scroll 25s linear infinite;
+  }
+  
+  /* Disable gradient animations on mobile */
+  .project-card:hover {
+    animation: none;
+  }
+  
+  /* Reduce box shadows on mobile for better performance */
+  .exp-card,
+  .proj-card,
+  .ach-card,
+  .contact-form {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .exp-card:hover,
+  .proj-card:hover,
+  .ach-card:hover,
+  .contact-form:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  /* Simplify transitions on mobile */
+  * {
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Prevent scroll jank from transforms */
+  section {
+    will-change: auto;
+  }
+  
+  /* Optimize scrollbar width for mobile (not shown anyway) */
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  /* Disable floating elements animation on mobile */
+  .floating-element {
+    animation: none !important;
+    display: none;
+  }
+}
+
+/* =====================================================
+   TOUCH DEVICE SPECIFIC OPTIMIZATIONS
+   ===================================================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets */
+  button, a, input, textarea, select {
+    min-height: 48px;
+    min-width: 44px;
+  }
+  
+  /* Disable hover effects, use active states */
+  *:hover {
+    transition: none;
+  }
+  
+  /* Optimize for touch scrolling */
+  body {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  
+  a, button {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  
+  /* Prevent layout shift during scrolling */
+  * {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Smooth momentum scrolling on iOS */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Optimize text rendering */
+  body, p, a, button, input, textarea {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* =====================================================
+   PERFORMANCE OPTIMIZATIONS
+   ===================================================== */
+
+/* Use CSS containment for better performance */
+.exp-card,
+.proj-card,
+.ach-card,
+section {
+  contain: layout style paint;
+}
+
+/* Optimize background-attachment for mobile */
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+  }
+}
+
+/* =====================================================
    RESPONSIVE
    ===================================================== */
 @media (max-width: 960px) {
