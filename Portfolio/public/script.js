@@ -42,6 +42,12 @@ function initAll() {
   initMagnetic();
   init3DCard();
   initActiveNav();
+  initScrollProgressBar();
+  initParallaxElements();
+  initFloatingElements();
+  initEnhancedCardInteractions();
+  initGlowingEffects();
+  initSmoothPageTransitions();
 }
 
 /* ---- CUSTOM CURSOR ---- */
@@ -383,6 +389,165 @@ function debounce(fn, delay) {
     timer = setTimeout(() => fn.apply(this, args), delay);
   };
 }
+
+/* ---- SCROLL PROGRESS BAR ---- */
+function initScrollProgressBar() {
+  let progressBar = document.getElementById('scrollProgressBar');
+  if (!progressBar) {
+    progressBar = document.createElement('div');
+    progressBar.id = 'scrollProgressBar';
+    progressBar.style.cssText = `
+      position: fixed; top: 0; left: 0; height: 3px; 
+      background: linear-gradient(90deg, var(--purple-l), var(--cyan-l), var(--pink-l));
+      z-index: 9999; width: 0;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.8);
+    `;
+    document.body.appendChild(progressBar);
+  }
+  
+  window.addEventListener('scroll', debounce(() => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+  }, 10), { passive: true });
+}
+
+/* ---- PARALLAX SCROLLING ---- */
+function initParallaxElements() {
+  const parallaxElements = document.querySelectorAll('[data-parallax]');
+  if (!parallaxElements.length) return;
+  
+  window.addEventListener('scroll', debounce(() => {
+    parallaxElements.forEach(el => {
+      const speed = el.getAttribute('data-parallax') || 0.5;
+      const yPos = window.scrollY * speed;
+      el.style.transform = `translateY(${yPos}px)`;
+    });
+  }, 10), { passive: true });
+}
+
+/* ---- FLOATING ANIMATED ELEMENTS ---- */
+function initFloatingElements() {
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(96, 165, 250, 0.4); }
+      50% { box-shadow: 0 0 30px rgba(96, 165, 250, 0.8); }
+    }
+    .floating-element {
+      animation: float 6s ease-in-out infinite;
+    }
+    .floating-element:nth-child(2) {
+      animation-delay: 1s;
+    }
+    .floating-element:nth-child(3) {
+      animation-delay: 2s;
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // Add floating elements to hero section
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    const floatingHTML = `
+      <div class="floating-element" style="position: absolute; top: 10%; left: 10%; width: 40px; height: 40px; background: linear-gradient(135deg, var(--purple-l), var(--cyan-l)); border-radius: 50%; opacity: 0.1;"></div>
+      <div class="floating-element" style="position: absolute; top: 60%; right: 5%; width: 60px; height: 60px; background: linear-gradient(135deg, var(--cyan-l), var(--pink-l)); border-radius: 50%; opacity: 0.08;"></div>
+      <div class="floating-element" style="position: absolute; bottom: 20%; left: 5%; width: 50px; height: 50px; background: linear-gradient(135deg, var(--pink-l), var(--purple-l)); border-radius: 50%; opacity: 0.1;"></div>
+    `;
+    hero.insertAdjacentHTML('beforeend', floatingHTML);
+  }
+}
+
+/* ---- ENHANCED CARD INTERACTIONS ---- */
+function initEnhancedCardInteractions() {
+  const cards = document.querySelectorAll('.project-card, [data-tilt]');
+  
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'all 0.4s var(--ease-spring)';
+      card.style.transform = 'translateY(-8px) scale(1.02)';
+      card.style.boxShadow = '0 20px 60px rgba(96, 165, 250, 0.3)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+  });
+}
+
+/* ---- GLOWING EFFECTS ---- */
+function initGlowingEffects() {
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes glow-pulse {
+      0%, 100% { text-shadow: 0 0 10px rgba(96, 165, 250, 0.3); }
+      50% { text-shadow: 0 0 20px rgba(96, 165, 250, 0.8); }
+    }
+    @keyframes box-glow {
+      0%, 100% { box-shadow: inset 0 0 20px rgba(96, 165, 250, 0.1), 0 0 20px rgba(96, 165, 250, 0.1); }
+      50% { box-shadow: inset 0 0 30px rgba(96, 165, 250, 0.2), 0 0 30px rgba(96, 165, 250, 0.2); }
+    }
+    .glow-text {
+      animation: glow-pulse 3s ease-in-out infinite;
+    }
+    .glow-box {
+      animation: box-glow 3s ease-in-out infinite;
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // Apply glow to section titles
+  document.querySelectorAll('.section-title em').forEach(el => {
+    el.classList.add('glow-text');
+  });
+}
+
+/* ---- SMOOTH PAGE TRANSITIONS ---- */
+function initSmoothPageTransitions() {
+  // Add smooth fade-in animation to all sections
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    section {
+      animation: fade-in-up 0.8s var(--ease) forwards;
+    }
+    section:nth-of-type(1) { animation-delay: 0s; }
+    section:nth-of-type(2) { animation-delay: 0.1s; }
+    section:nth-of-type(3) { animation-delay: 0.2s; }
+    section:nth-of-type(4) { animation-delay: 0.3s; }
+    section:nth-of-type(5) { animation-delay: 0.4s; }
+  `;
+  document.head.appendChild(style);
+  
+  // Smooth transitions for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      if (link.getAttribute('href') !== '#') {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+}
+
 
 /* ---- CONTACT FORM TO GOOGLE SHEETS ---- */
 
