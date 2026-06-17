@@ -575,71 +575,7 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
   .h-divider { display: block; }
 }
 
-.hero-profile-panel {
-  position: relative;
-  z-index: 2;
-  background: rgba(15, 26, 45, 0.78);
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  border-radius: var(--radius-lg);
-  padding: clamp(1.2rem, 3vw, 2rem);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  width: clamp(90%, 85vw, 560px);
-  margin: clamp(2rem, 4vw, 3rem) auto 0;
-  overflow: hidden;
-}
-.hero-profile-panel::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border-top: 3px solid var(--pink);
-  pointer-events: none;
-}
-.panel-kicker {
-  color: var(--pink-l);
-  font-size: clamp(0.65rem, 1.2vw, 0.72rem);
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: clamp(0.8rem, 2vw, 1.3rem);
-}
-.panel-metric {
-  display: grid;
-  grid-template-columns: 36px 1fr;
-  gap: clamp(0.6rem, 1.5vw, 1rem) clamp(0.8rem, 2vw, 1rem);
-  padding: clamp(0.8rem, 1.5vw, 1rem) 0;
-  border-top: 1px solid rgba(148, 163, 184, 0.16);
-}
-.panel-metric:first-of-type {
-  border-top: none;
-  padding-top: 0;
-}
-.panel-metric span {
-  grid-row: span 2;
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(96, 165, 250, 0.12);
-  color: var(--purple-l);
-  font-size: clamp(0.65rem, 1.2vw, 0.76rem);
-  font-weight: 800;
-  flex-shrink: 0;
-}
-.panel-metric strong {
-  color: var(--white);
-  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
-  word-break: break-word;
-}
-.panel-metric p {
-  color: rgba(226, 232, 240, 0.58);
-  font-size: clamp(0.75rem, 1.3vw, 0.84rem);
-  line-height: 1.6;
-}
+
 
 .hero-scroll-hint {
   position: absolute;
@@ -656,14 +592,6 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
 
 @media (min-width: 768px) {
   .hero-scroll-hint { display: flex; }
-  
-  .hero-profile-panel {
-    position: absolute;
-    bottom: clamp(2rem, 4vw, 4rem);
-    right: clamp(1rem, 3vw, 3rem);
-    width: 350px;
-    margin: 0;
-  }
 }
 
 .hero-scroll-hint span {
