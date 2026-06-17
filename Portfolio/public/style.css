@@ -807,6 +807,7 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
 .ac-row {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 0.6rem;
   font-size: clamp(0.8rem, 1.2vw, 0.87rem);
   color: var(--muted);
@@ -815,14 +816,18 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
   min-height: 44px;
   padding-top: clamp(0.5rem, 1vw, 0.6rem);
   padding-bottom: clamp(0.5rem, 1vw, 0.6rem);
+  width: 100%;
 }
 .ac-row i {
   color: var(--purple-l);
   width: 18px;
   height: 18px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   font-size: 1rem;
+  line-height: 1;
 }
 
 .ac-row .fab.fa-linkedin {
@@ -832,8 +837,10 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
 .ac-row a {
   color: #0A66C2;
   transition: all 0.3s ease;
-  word-break: break-word;
   font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-block;
 }
 .ac-row a:hover {
   color: var(--white);
