@@ -286,6 +286,8 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
   transform: rotate(-45deg) translate(8px, -8px);
 }
 
+
+
 /* ---- Desktop Navigation (1024px+) ---- */
 @media (min-width: 1024px) {
   .hamburger { display: none; }
