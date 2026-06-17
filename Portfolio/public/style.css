@@ -339,6 +339,7 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
   min-height: 100svh;
   background: var(--dark);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -585,8 +586,9 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   width: 100%;
-  max-width: 560px;
+  max-width: min(560px, 100vw - clamp(2rem, 8vw, 4rem));
   margin-top: clamp(2rem, 4vw, 3rem);
+  overflow: hidden;
 }
 .hero-profile-panel::before {
   content: '';
