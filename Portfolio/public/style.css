@@ -811,7 +811,7 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
   font-size: clamp(0.8rem, 1.2vw, 0.87rem);
   color: var(--muted);
   padding: clamp(0.3rem, 0.5vw, 0.4rem) 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   min-height: 44px;
   padding-top: clamp(0.5rem, 1vw, 0.6rem);
   padding-bottom: clamp(0.5rem, 1vw, 0.6rem);
