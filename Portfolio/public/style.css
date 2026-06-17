@@ -783,9 +783,15 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
 }
 .ac-front h3 {
   font-family: var(--font-s);
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
   color: var(--white);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--white), var(--cyan-l));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .ac-front > p {
   font-size: clamp(0.75rem, 1.2vw, 0.82rem);
@@ -812,17 +818,26 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
 }
 .ac-row i {
   color: var(--purple-l);
-  width: 16px;
+  width: 18px;
+  height: 18px;
   text-align: center;
   flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.ac-row .fab.fa-linkedin {
+  color: #0A66C2;
+  font-size: 1.1rem;
 }
 .ac-row a {
-  color: var(--cyan-l);
-  transition: color 0.2s;
+  color: #0A66C2;
+  transition: all 0.3s ease;
   word-break: break-word;
+  font-weight: 500;
 }
 .ac-row a:hover {
   color: var(--white);
+  text-decoration: underline;
 }
 .available-row {
   color: #4ade80 !important;
