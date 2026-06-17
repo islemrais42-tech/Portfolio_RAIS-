@@ -48,6 +48,7 @@ function initAll() {
   initEnhancedCardInteractions();
   initGlowingEffects();
   initSmoothPageTransitions();
+  initNewsletterHandler();
 }
 
 /* ---- CUSTOM CURSOR ---- */
@@ -572,6 +573,46 @@ function initSmoothPageTransitions() {
         }
       }
     });
+  });
+}
+
+/* ---- NEWSLETTER ---- */
+function initNewsletterHandler() {
+  const input = document.getElementById('newsletterEmail');
+  const button = document.getElementById('newsletterBtn');
+  if (!input || !button) return;
+
+  const originalButtonHtml = button.innerHTML;
+  const status = document.createElement('p');
+  status.className = 'bn-status';
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  input.closest('.blog-newsletter')?.appendChild(status);
+
+  button.addEventListener('click', () => {
+    const email = input.value.trim();
+
+    if (!validateEmail(email)) {
+      status.textContent = 'Please enter a valid email address.';
+      status.classList.remove('success');
+      status.classList.add('error');
+      input.focus();
+      return;
+    }
+
+    button.disabled = true;
+    button.innerHTML = '<i class="fas fa-check"></i><span>Subscribed</span>';
+    status.textContent = 'Thanks, you are on the list.';
+    status.classList.remove('error');
+    status.classList.add('success');
+    input.value = '';
+
+    setTimeout(() => {
+      button.disabled = false;
+      button.innerHTML = originalButtonHtml;
+      status.textContent = '';
+      status.classList.remove('success');
+    }, 3000);
   });
 }
 
