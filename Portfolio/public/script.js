@@ -105,17 +105,35 @@ function initMobileMenu() {
   const links = document.getElementById('navLinks');
   if (!btn || !links) return;
 
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
     btn.classList.toggle('open');
     links.classList.toggle('open');
   });
 
+  // Close menu when clicking a link
   links.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       btn.classList.remove('open');
       links.classList.remove('open');
     });
   });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !links.contains(e.target)) {
+      btn.classList.remove('open');
+      links.classList.remove('open');
+    }
+  }, { passive: true });
+
+  // Close menu on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      btn.classList.remove('open');
+      links.classList.remove('open');
+    }
+  }, { passive: true });
 }
 
 /* ---- PARTICLES ---- */
