@@ -589,7 +589,7 @@ function initNewsletterHandler() {
   status.setAttribute('aria-live', 'polite');
   input.closest('.blog-newsletter')?.appendChild(status);
 
-  button.addEventListener('click', () => {
+  button.addEventListener('click', async () => {
     const email = input.value.trim();
 
     if (!validateEmail(email)) {
@@ -601,18 +601,47 @@ function initNewsletterHandler() {
     }
 
     button.disabled = true;
-    button.innerHTML = '<i class="fas fa-check"></i><span>Subscribed</span>';
-    status.textContent = 'Thanks, you are on the list.';
-    status.classList.remove('error');
-    status.classList.add('success');
-    input.value = '';
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Joining...</span>';
+    status.textContent = '';
+    status.classList.remove('error', 'success');
+
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Newsletter subscriber',
+          email,
+          subject: 'Newsletter signup',
+          message: 'Please add me to Islem Rais fintech and B2B growth newsletter updates.',
+          timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Africa/Algiers' })
+        }),
+        signal: controller.signal,
+        keepalive: true
+      });
+
+      clearTimeout(timeoutId);
+      button.innerHTML = '<i class="fas fa-check"></i><span>Joined</span>';
+      status.textContent = 'Thanks, you are on the list.';
+      status.classList.add('success');
+      input.value = '';
+    } catch (err) {
+      button.innerHTML = originalButtonHtml;
+      status.textContent = 'Could not join right now. Please connect on LinkedIn instead.';
+      status.classList.add('error');
+      console.error('Newsletter signup error:', err.message);
+    }
 
     setTimeout(() => {
       button.disabled = false;
       button.innerHTML = originalButtonHtml;
       status.textContent = '';
-      status.classList.remove('success');
-    }, 3000);
+      status.classList.remove('success', 'error');
+    }, 3500);
   });
 }
 
