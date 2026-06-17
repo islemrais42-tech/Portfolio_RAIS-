@@ -585,9 +585,8 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  width: 100%;
-  max-width: min(560px, 100vw - clamp(2rem, 8vw, 4rem));
-  margin-top: clamp(2rem, 4vw, 3rem);
+  width: clamp(90%, 85vw, 560px);
+  margin: clamp(2rem, 4vw, 3rem) auto 0;
   overflow: hidden;
 }
 .hero-profile-panel::before {
@@ -662,9 +661,8 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
     position: absolute;
     bottom: clamp(2rem, 4vw, 4rem);
     right: clamp(1rem, 3vw, 3rem);
-    width: auto;
-    max-width: 350px;
-    margin-top: 0;
+    width: 350px;
+    margin: 0;
   }
 }
 
@@ -1896,16 +1894,7 @@ img, video, iframe, canvas { max-width: 100%; display: block; }
   }
 }
 
-/* Tablet landscape (768px - 1023px) adjustments */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .hero-profile-panel {
-    position: relative;
-    bottom: auto;
-    right: auto;
-    margin-top: clamp(2rem, 4vw, 3rem);
-    max-width: 100%;
-  }
-}
+
 
 /* Large desktop (1440px+) */
 @media (min-width: 1440px) {
