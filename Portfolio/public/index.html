@@ -3,469 +3,1177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Islem Rais | Account Manager & Client Success Professional</title>
-  <meta name="description" content="Professional portfolio for Islem Rais, an account manager focused on client success, retention, stakeholder management, and revenue growth." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="fonts/fa-all.min.css" />
+  <meta name="description" content="Islem Rais portfolio: Account Manager, Client Success and Revenue Growth professional focused on fintech, business development, partnerships, and AML/KYC advisory in Algeria." />
+  <title>Islem Rais | Account Manager & Fintech Business Development</title>
+
+  <!-- ADSENSE CODE HERE: paste your Google AdSense script after approval. -->
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <style>
+    :root {
+      --accent: #3b82f6;
+      --accent-2: #14b8a6;
+      --bg: #07111f;
+      --bg-soft: #0d1a2d;
+      --panel: #101c31;
+      --panel-2: #14233c;
+      --text: #f8fafc;
+      --muted: #9fb0c7;
+      --line: rgba(148, 163, 184, 0.18);
+      --white: #ffffff;
+      --black: #0f172a;
+      --light-bg: #f8fafc;
+      --light-panel: #ffffff;
+      --light-text: #142033;
+      --light-muted: #5b677a;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      min-height: 100vh;
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    body.theme-light {
+      --bg: var(--light-bg);
+      --bg-soft: #eef4fb;
+      --panel: var(--light-panel);
+      --panel-2: #f2f6fb;
+      --text: var(--light-text);
+      --muted: var(--light-muted);
+      --line: rgba(20, 32, 51, 0.14);
+      --shadow: 0 18px 55px rgba(20, 32, 51, 0.12);
+    }
+    body.admin-active { background: #070b14; color: #e5edf9; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    textarea { resize: vertical; min-height: 110px; }
+    img { max-width: 100%; display: block; }
+
+    .site-shell { min-height: 100vh; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: clamp(64px, 9vw, 112px) 0; }
+    .section.alt { background: linear-gradient(180deg, transparent, rgba(148, 163, 184, 0.06), transparent); }
+    .section-head { max-width: 720px; margin-bottom: 34px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-2);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; border-radius: 999px; }
+    h1, h2, h3 { line-height: 1.08; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2.7rem, 8vw, 6.8rem); max-width: 980px; }
+    h2 { font-size: clamp(2rem, 5vw, 3.6rem); }
+    h3 { font-size: 1.18rem; }
+    p { color: var(--muted); }
+    .lead { font-size: clamp(1rem, 2vw, 1.18rem); max-width: 760px; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      width: min(1180px, calc(100% - 28px));
+      height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 900; }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 12px 35px color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+    .nav-links { display: flex; align-items: center; gap: 18px; font-size: 0.9rem; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .icon-btn, .menu-btn {
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      background: color-mix(in srgb, var(--panel) 88%, transparent);
+    }
+    .menu-btn { display: none; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 16px 40px color-mix(in srgb, var(--accent) 28%, transparent);
+    }
+    .btn.secondary {
+      color: var(--text);
+      background: transparent;
+      border-color: var(--line);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 72px);
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      background: var(--hero-bg, radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 28%, transparent), transparent 34%), linear-gradient(135deg, var(--bg), var(--bg-soft)));
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -35% -10%;
+      height: 45%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 38px; align-items: center; padding: 70px 0; }
+    .hero-copy { display: grid; gap: 22px; }
+    .hero-copy strong { color: var(--accent-2); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-panel {
+      background: color-mix(in srgb, var(--panel) 88%, transparent);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .profile-card { display: grid; gap: 18px; }
+    .avatar {
+      width: 92px;
+      height: 92px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 950;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+    .profile-list { display: grid; gap: 11px; }
+    .profile-list span { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 0.92rem; }
+    .ad-slot {
+      display: none;
+      width: 100%;
+      min-height: 92px;
+      margin: 26px 0;
+      padding: 18px;
+      border: 1px dashed color-mix(in srgb, var(--accent) 50%, var(--line));
+      border-radius: var(--radius-sm);
+      color: var(--muted);
+      background: color-mix(in srgb, var(--panel) 58%, transparent);
+      text-align: center;
+    }
+    .ad-slot.visible { display: grid; place-items: center; }
+    .ad-slot small { display: block; color: var(--muted); }
+
+    .stats-grid, .card-grid, .tools-grid { display: grid; gap: 16px; }
+    .stats-grid { grid-template-columns: repeat(4, 1fr); margin-top: 18px; }
+    .stat-card, .card, .tool-chip {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--panel) 92%, transparent);
+      box-shadow: var(--shadow);
+    }
+    .stat-card { padding: 20px; }
+    .stat-number { color: var(--text); font-size: clamp(2rem, 4vw, 3rem); font-weight: 950; line-height: 1; }
+    .stat-label { margin-top: 8px; font-size: 0.86rem; }
+    .two-col { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 28px; align-items: start; }
+    .card-grid { grid-template-columns: repeat(3, 1fr); }
+    .card { padding: 22px; display: grid; gap: 14px; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: var(--accent-2);
+      background: color-mix(in srgb, var(--accent-2) 14%, transparent);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+    .skill-list { display: grid; gap: 16px; }
+    .skill-row { display: grid; gap: 8px; }
+    .skill-meta { display: flex; justify-content: space-between; gap: 12px; font-weight: 800; }
+    .bar { height: 10px; overflow: hidden; border-radius: 999px; background: color-mix(in srgb, var(--muted) 18%, transparent); }
+    .bar span { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 1.2s ease; }
+    .timeline { display: grid; gap: 16px; }
+    .timeline-item { border-left: 3px solid var(--accent); padding: 6px 0 8px 18px; }
+    .tools-grid { grid-template-columns: repeat(7, 1fr); }
+    .tool-chip {
+      min-height: 82px;
+      display: grid;
+      place-items: center;
+      padding: 14px;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .blog-grid .ad-slot { grid-column: 1 / -1; margin: 0; }
+    .blog-card { min-height: 100%; }
+    .blog-card article { display: grid; gap: 12px; }
+    .blog-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .blog-card.open .blog-body { max-height: 600px; }
+    .read-more { color: var(--accent-2); font-weight: 900; background: none; border: 0; justify-self: start; }
+    .contact-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 24px; }
+    .contact-box { display: grid; gap: 14px; }
+    .contact-form { display: grid; gap: 12px; }
+    .field { display: grid; gap: 7px; }
+    .field label { color: var(--muted); font-size: 0.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; }
+    .field input, .field textarea, .field select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      background: color-mix(in srgb, var(--panel-2) 82%, transparent);
+      padding: 12px 13px;
+      outline: none;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+    .privacy { max-width: 850px; display: grid; gap: 18px; }
+    .footer { padding: 32px 0; border-top: 1px solid var(--line); color: var(--muted); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .hidden-admin-trigger {
+      position: fixed;
+      right: 10px;
+      bottom: 10px;
+      z-index: 80;
+      width: 28px;
+      height: 28px;
+      opacity: 0.08;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .hidden-admin-trigger:hover { opacity: 0.6; }
+
+    .admin-shell { display: none; min-height: 100vh; background: #070b14; color: #e5edf9; }
+    body.admin-active .site-shell { display: none; }
+    body.admin-active .admin-shell { display: block; }
+    .login-screen { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+    .login-card {
+      width: min(430px, 100%);
+      padding: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 22px;
+      background: #0c1220;
+      box-shadow: 0 28px 90px rgba(0,0,0,0.46);
+    }
+    .admin-app { display: none; min-height: 100vh; }
+    .admin-authed .login-screen { display: none; }
+    .admin-authed .admin-app { display: grid; grid-template-columns: 270px 1fr; }
+    .admin-sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 20px;
+      border-right: 1px solid rgba(148, 163, 184, 0.14);
+      background: #080d18;
+    }
+    .admin-logo { display: flex; align-items: center; gap: 11px; margin-bottom: 24px; font-weight: 950; }
+    .admin-nav { display: grid; gap: 8px; }
+    .admin-tab {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      color: #9aa9bd;
+      background: transparent;
+      padding: 11px 12px;
+      text-align: left;
+      font-weight: 800;
+    }
+    .admin-tab.active, .admin-tab:hover { color: #fff; background: #111a2c; border-color: rgba(148, 163, 184, 0.14); }
+    .admin-main { padding: 22px; overflow: hidden; }
+    .admin-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .admin-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+    .admin-card {
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 18px;
+      background: #0c1220;
+      padding: 18px;
+    }
+    .admin-card h3 { margin-bottom: 14px; }
+    .admin-section { display: none; }
+    .admin-section.active { display: grid; gap: 16px; }
+    .admin-form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .admin-list { display: grid; gap: 12px; }
+    .admin-list-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+      padding: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 14px;
+      background: #0a101d;
+    }
+    .admin-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .mini-btn {
+      min-height: 36px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 10px;
+      color: #e5edf9;
+      background: #121b2e;
+      padding: 0 11px;
+      font-weight: 800;
+    }
+    .mini-btn.danger { color: #fecaca; background: rgba(239, 68, 68, 0.12); }
+    .mini-btn.primary { color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+    .switch-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .switch { position: relative; width: 54px; height: 30px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: #273244;
+      transition: 0.2s;
+    }
+    .slider::before {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      left: 3px;
+      top: 3px;
+      border-radius: 50%;
+      background: #fff;
+      transition: 0.2s;
+    }
+    .switch input:checked + .slider { background: var(--accent); }
+    .switch input:checked + .slider::before { transform: translateX(24px); }
+    .ad-preview {
+      min-height: 82px;
+      display: grid;
+      place-items: center;
+      border: 1px dashed rgba(148, 163, 184, 0.25);
+      border-radius: 12px;
+      color: #9aa9bd;
+      background: #080d18;
+      overflow: auto;
+      padding: 10px;
+    }
+    .live-preview {
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 18px;
+      background: linear-gradient(135deg, #10192a, #07111f);
+      padding: 20px;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; position: absolute; top: 72px; left: 14px; right: 14px; padding: 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); box-shadow: var(--shadow); }
+      .nav-links.open { display: grid; }
+      .menu-btn { display: inline-grid; }
+      .hero-grid, .two-col, .contact-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .stats-grid, .card-grid, .blog-grid { grid-template-columns: repeat(2, 1fr); }
+      .tools-grid { grid-template-columns: repeat(3, 1fr); }
+      .admin-authed .admin-app { grid-template-columns: 1fr; }
+      .admin-sidebar { position: relative; height: auto; }
+      .admin-nav { grid-template-columns: repeat(2, 1fr); }
+      .admin-grid, .admin-form-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      html { scroll-padding-top: 68px; }
+      .nav-inner { height: 66px; }
+      .brand span:last-child { max-width: 45vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .container { width: min(100% - 24px, 1120px); }
+      .section { padding: 52px 0; }
+      .hero-grid { padding: 46px 0; }
+      .hero-actions, .footer-inner { display: grid; }
+      .btn { width: 100%; }
+      .stats-grid, .card-grid, .blog-grid, .tools-grid, .admin-grid, .admin-form-grid { grid-template-columns: 1fr; }
+      .hero-panel, .card, .stat-card, .admin-card { border-radius: 14px; }
+      .contact-form input, .contact-form textarea, .field input, .field textarea, .field select { font-size: 16px; }
+      .admin-main, .admin-sidebar { padding: 14px; }
+      .admin-topbar, .admin-list-item { grid-template-columns: 1fr; display: grid; }
+      .admin-nav { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body class="loading">
-
-  <!-- PRELOADER -->
-  <div class="preloader" id="preloader">
-    <div class="preloader-inner">
-      <div class="preloader-logo">IR</div>
-      <div class="preloader-bar"><div class="preloader-fill" id="preloaderFill"></div></div>
-      <p class="preloader-text" id="preloaderText">Loading...</p>
-    </div>
-  </div>
-
-  <!-- CURSOR -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-follower" id="cursorFollower"></div>
-
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <a href="#home" class="nav-brand">
-      <span class="brand-initials">IR</span>
-      <span class="brand-name" id="navName">Islem Rais</span>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <canvas id="particleCanvas"></canvas>
-    <div class="hero-noise"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow">
-        <span class="dot-pulse"></span>
-        <span id="heroAvailText">Available for new opportunities</span>
-      </div>
-      <div class="hero-title-wrap">
-        <h1 class="hero-title">
-          <span id="heroFirstName">Islem</span>
-          <span class="grad" id="heroLastName">Rais</span>
-        </h1>
-      </div>
-      <div class="hero-role-wrap">
-        <span class="hero-role-text" id="typedRole"></span>
-        <span class="type-cursor" aria-hidden="true">|</span>
-      </div>
-      <p class="hero-desc" id="heroBio1">Driving client success and sustainable revenue growth through strategic relationship management and data-informed account development.</p>
-      <div class="hero-cta">
-        <a href="#contact" class="cta-primary magnetic">
-          <span>Hire Me</span>
-          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+<body>
+  <div class="site-shell" id="siteShell">
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="#home" aria-label="Islem Rais home">
+          <span class="brand-mark">IR</span>
+          <span>Islem Rais</span>
         </a>
-        <a href="#blog" class="cta-secondary magnetic">
-          <span>Read Insights</span>
-        </a>
-      </div>
-      <div class="hero-stats" id="heroStats"><!-- rendered by JS --></div>
-    </div>
-    <div class="hero-scroll-hint">
-      <div class="mouse-icon"><div class="mouse-dot"></div></div>
-      <span>Scroll Down</span>
-    </div>
-    <div class="hero-line-left"></div>
-    <div class="hero-line-right"></div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-visual stagger-item" data-parallax="0.5">
-          <div class="about-card-3d" id="aboutCard">
-            <div class="ac-front">
-              <div class="ac-avatar">IR</div>
-              <h3 id="acName">Islem Rais</h3>
-              <p id="acRole">Account Manager</p>
-              <div class="ac-divider"></div>
-              <div class="ac-row"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span id="acLocation">Algeria</span></div>
-              <div class="ac-row"><i class="fab fa-linkedin" aria-hidden="true"></i>
-                <a id="acLinkedin" href="https://www.linkedin.com/in/islem-rais" target="_blank">islem-rais</a>
-              </div>
-              <div class="ac-row available-row" id="acAvailRow">
-                <span class="green-dot"></span> Open to opportunities
-              </div>
-            </div>
-          </div>
-          <div class="floating-badge badge-1 float-anim">
-            <i class="fas fa-trophy" aria-hidden="true"></i> <span id="badge1Text">Top Performer 2024</span>
-          </div>
-          <div class="floating-badge badge-2 float-anim-2">
-            <i class="fas fa-star" aria-hidden="true"></i> <span id="badge2Text">95% Retention</span>
-          </div>
-        </div>
-        <div class="about-text">
-          <div class="section-label stagger-item">About Me</div>
-          <h2 class="section-title stagger-item">Turning Client <br><em>Relationships</em> Into<br>Business Results</h2>
-          <p class="stagger-item" id="aboutBio1"></p>
-          <p class="stagger-item" id="aboutBio2"></p>
-          <div class="about-skills stagger-item" id="skillBars"><!-- rendered by JS --></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERTISE -->
-  <section class="section section-dark" id="expertise">
-    <div class="container">
-      <div class="section-head stagger-item">
-        <div class="section-label light">Core Expertise</div>
-        <h2 class="section-title light">What I Bring <em>to the Table</em></h2>
-      </div>
-      <div class="expertise-grid" id="expertiseGrid"><!-- rendered by JS --></div>
-      <div class="tools-marquee-wrap stagger-item">
-        <div class="marquee-label">Tools & Platforms</div>
-        <div class="marquee-track">
-          <div class="marquee-inner" id="marqueeInner"><!-- rendered by JS --></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section" id="experience">
-    <div class="container">
-      <div class="section-head stagger-item">
-        <div class="section-label">Career Journey</div>
-        <h2 class="section-title">Professional <em>Experience</em></h2>
-      </div>
-      <div class="timeline" id="experienceList"><!-- rendered by JS --></div>
-
-      <div class="section-head stagger-item" style="margin-top:5rem">
-        <div class="section-label">Education</div>
-        <h2 class="section-title">Academic <em>Background</em></h2>
-      </div>
-      <div class="timeline" id="educationList"><!-- rendered by JS --></div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="section section-dark" id="projects">
-    <div class="container">
-      <div class="section-head stagger-item">
-        <div class="section-label light">Portfolio</div>
-        <h2 class="section-title light">Featured <em>Projects</em></h2>
-      </div>
-      <div class="projects-grid" id="projectsGrid"><!-- rendered by JS --></div>
-    </div>
-  </section>
-
-  <!-- ACHIEVEMENTS -->
-  <section class="section" id="achievements">
-    <div class="container">
-      <div class="section-head stagger-item">
-        <div class="section-label">Recognition</div>
-        <h2 class="section-title">Key <em>Achievements</em></h2>
-      </div>
-      <div class="ach-grid" id="achGrid"><!-- rendered by JS --></div>
-    </div>
-  </section>
-
-  <!-- CONSULTING SERVICES -->
-  <section class="section section-dark" id="services">
-    <div class="container">
-      <div class="section-head stagger-item">
-        <div class="section-label light">Available Now</div>
-        <h2 class="section-title light">Consulting <em>Services</em></h2>
-        <p class="section-sub">Leverage my expertise to accelerate your business growth and optimize customer relationships</p>
-      </div>
-      <div class="services-grid" id="servicesGrid">
-        <div class="service-card stagger-item">
-          <div class="sc-icon">
-            <i class="fas fa-handshake" aria-hidden="true"></i>
-          </div>
-          <h3>Relationship Strategy</h3>
-          <p>Strategic planning for customer acquisition, retention, and lifetime value optimization in B2B environments.</p>
-          <ul class="sc-features">
-            <li><i class="fas fa-check" aria-hidden="true"></i> Account strategy development</li>
-            <li><i class="fas fa-check" aria-hidden="true"></i> Stakeholder mapping</li>
-            <li><i class="fas fa-check" aria-hidden="true"></i> Revenue growth planning</li>
-          </ul>
-        </div>
-
-        <div class="service-card stagger-item">
-          <div class="sc-icon">
-            <i class="fas fa-lock" aria-hidden="true"></i>
-          </div>
-          <h3>AML/KYC Advisory</h3>
-          <p>Compliance and regulatory guidance for fintech companies operating in regulated markets including Algeria and North Africa.</p>
-          <ul class="sc-features">
-            <li><i class="fas fa-check" aria-hidden="true"></i> Regulatory compliance review</li>
-            <li><i class="fas fa-check" aria-hidden="true"></i> Risk assessment</li>
-            <li><i class="fas fa-check" aria-hidden="true"></i> Best practices guidance</li>
-          </ul>
-        </div>
-
-        <div class="service-card stagger-item">
-          <div class="sc-icon">
-            <i class="fas fa-network-wired" aria-hidden="true"></i>
-          </div>
-          <h3>Fintech Partnerships</h3>
-          <p>Facilitate strategic partnerships and business development opportunities in the fintech and digital payments ecosystem.</p>
-          <ul class="sc-features">
-            <li><i class="fas fa-check" aria-hidden="true"></i> Partnership strategy</li>
-            <li><i class="fas fa-check" aria-hidden="true"></i> Market analysis</li>
-            <li><i class="fas fa-check" aria-hidden="true"></i> Deal structuring</li>
-          </ul>
-        </div>
-
-        <div class="service-card stagger-item">
-          <div class="sc-icon">
-            <i class="fas fa-chart-line" aria-hidden="true"></i>
-          </div>
-          <h3>Go-to-Market Strategy</h3>
-          <p>Comprehensive GTM planning for product launches and market expansion in emerging markets.</p>
-          <ul class="sc-features">
-            <li><i class="fas fa-check" aria-hidden="true"></i> Market research</li>
-            <li><i class="fas fa-check" aria-hidden="true"></i> Competitive analysis</li>
-            <li><i class="fas fa-check" aria-hidden="true"></i> Execution roadmap</li>
-          </ul>
-        </div>
-      </div>
-      <div class="services-cta stagger-item">
-        <p>Available for short advisory calls, project-based consulting, and ongoing partnership support.</p>
-        <a href="#contact" class="cta-primary magnetic">
-          <span>Request Consulting Support</span>
-          <i class="fas fa-arrow-right" aria-hidden="true"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOG -->
-  <section class="section" id="blog">
-    <div class="container">
-      <div class="section-head stagger-item">
-        <div class="section-label">Insights</div>
-        <h2 class="section-title">Latest <em>Articles</em></h2>
-        <p class="section-sub">Thoughts on fintech, B2B strategy, and building sustainable business relationships</p>
-      </div>
-      <div class="blog-grid" id="blogGrid">
-        <article class="blog-card stagger-item">
-          <div class="bc-header">
-            <div class="bc-date">June 2026</div>
-            <div class="bc-category">Fintech</div>
-          </div>
-          <h3 class="bc-title">Digital Payments Trends in North Africa</h3>
-          <p class="bc-excerpt">An analysis of emerging digital payment solutions, regulatory frameworks, and market opportunities in Algeria and neighboring countries.</p>
-          <div class="bc-meta">
-            <span class="bc-read-time">8 min read</span>
-            <a href="#" class="bc-read-more">Read Article <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </article>
-
-        <article class="blog-card stagger-item">
-          <div class="bc-header">
-            <div class="bc-date">May 2026</div>
-            <div class="bc-category">Strategy</div>
-          </div>
-          <h3 class="bc-title">Building High-Performing Account Management Teams</h3>
-          <p class="bc-excerpt">Best practices for recruiting, training, and retaining top account managers in competitive markets. Includes real-world case studies and metrics.</p>
-          <div class="bc-meta">
-            <span class="bc-read-time">10 min read</span>
-            <a href="#" class="bc-read-more">Read Article <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </article>
-
-        <article class="blog-card stagger-item">
-          <div class="bc-header">
-            <div class="bc-date">April 2026</div>
-            <div class="bc-category">B2B</div>
-          </div>
-          <h3 class="bc-title">AML/KYC Compliance in Emerging Markets</h3>
-          <p class="bc-excerpt">Navigating regulatory complexities while maintaining agile customer onboarding. A practical guide for fintech companies scaling in regulated environments.</p>
-          <div class="bc-meta">
-            <span class="bc-read-time">7 min read</span>
-            <a href="#" class="bc-read-more">Read Article <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </article>
-
-        <article class="blog-card stagger-item">
-          <div class="bc-header">
-            <div class="bc-date">March 2026</div>
-            <div class="bc-category">Growth</div>
-          </div>
-          <h3 class="bc-title">Customer Retention vs Acquisition: The Unit Economics Reality</h3>
-          <p class="bc-excerpt">Why retention-focused strategies consistently outperform acquisition-heavy approaches. Data-driven insights from enterprise SaaS and fintech companies.</p>
-          <div class="bc-meta">
-            <span class="bc-read-time">9 min read</span>
-            <a href="#" class="bc-read-more">Read Article <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </article>
-      </div>
-      <div class="blog-newsletter stagger-item">
-        <div class="bn-content">
-          <h3>LinkedIn Newsletter</h3>
-          <p>Follow my fintech, digital payments, AML/KYC, and B2B growth notes as the content library grows toward AdSense readiness.</p>
-        </div>
-        <div class="bn-form">
-          <input type="email" placeholder="your@email.com" id="newsletterEmail" />
-          <button type="button" id="newsletterBtn" class="cta-primary magnetic">
-            <span>Subscribe</span>
-            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GROWTH ROADMAP -->
-  <section class="section section-dark" id="growth">
-    <div class="container">
-      <div class="section-head stagger-item">
-        <div class="section-label light">Growth Plan</div>
-        <h2 class="section-title light">Monetization <em>Roadmap</em></h2>
-        <p class="section-sub">A clear path for turning expertise into consulting leads, newsletter audience growth, and future blog monetization.</p>
-      </div>
-      <div class="growth-grid">
-        <div class="growth-card stagger-item">
-          <div class="growth-step">01</div>
-          <h3>Consulting CTA</h3>
-          <p>Use the site to attract business development, fintech partnership, account strategy, and AML/KYC advisory inquiries.</p>
-          <a href="#contact">Hire Me <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-        </div>
-        <div class="growth-card stagger-item">
-          <div class="growth-step">02</div>
-          <h3>Fintech Blog</h3>
-          <p>Publish practical articles about fintech in Algeria, digital payments, compliance, and B2B growth before applying for AdSense.</p>
-          <a href="#blog">View Topics <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-        </div>
-        <div class="growth-card stagger-item">
-          <div class="growth-step">03</div>
-          <h3>Custom Domain</h3>
-          <p>Move from GitHub Pages to a branded domain such as islemrais.com once the domain is purchased and DNS is ready.</p>
-          <span class="growth-note">Domain setup ready</span>
-        </div>
-        <div class="growth-card stagger-item">
-          <div class="growth-step">04</div>
-          <h3>Newsletter Funnel</h3>
-          <p>Connect LinkedIn Newsletter, Substack, or Beehiiv so readers can follow premium insights outside the portfolio.</p>
-          <a href="https://www.linkedin.com/in/islem-rais" target="_blank" rel="noopener">Follow on LinkedIn <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section section-dark" id="contact">
-    <div class="container">
-      <div class="section-head stagger-item">
-        <div class="section-label light">Let's Talk</div>
-        <h2 class="section-title light">Start a <em>Conversation</em></h2>
-        <p class="section-sub">Open to new opportunities, strategic partnerships, and professional conversations.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info stagger-item">
-          <div class="contact-card">
-            <div class="cc-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-            <div>
-              <p class="cc-label">Email</p>
-              <a id="contactEmail" href="#contact">Use the contact form</a>
-            </div>
-          </div>
-          <div class="contact-card">
-            <div class="cc-icon"><i class="fab fa-linkedin" aria-hidden="true"></i></div>
-            <div>
-              <p class="cc-label">LinkedIn</p>
-              <a id="contactLinkedin" href="https://www.linkedin.com/in/islem-rais" target="_blank">linkedin.com/in/islem-rais</a>
-            </div>
-          </div>
-          <div class="contact-card">
-            <div class="cc-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
-            <div>
-              <p class="cc-label">Location</p>
-              <span id="contactLocation">Algeria</span>
-            </div>
-          </div>
-          <div class="contact-availability">
-            <span class="green-dot"></span>
-            <p>Currently open to full-time and consulting opportunities.</p>
-          </div>
-        </div>
-        <form class="contact-form stagger-item" onsubmit="handleSubmit(event)" novalidate>
-          <div class="cf-row">
-            <div class="cf-field">
-              <label for="cf-name">Full Name</label>
-              <div class="cf-input-wrap">
-                <input id="cf-name" name="name" type="text" placeholder="John Smith" required minlength="2" maxlength="100" autocomplete="name" />
-                <span class="cf-focus-bar"></span>
-              </div>
-            </div>
-            <div class="cf-field">
-              <label for="cf-email">Email Address</label>
-              <div class="cf-input-wrap">
-                <input id="cf-email" name="email" type="email" placeholder="john@company.com" required maxlength="254" autocomplete="email" />
-                <span class="cf-focus-bar"></span>
-              </div>
-            </div>
-          </div>
-          <div class="cf-field">
-            <label for="cf-subject">Subject</label>
-            <div class="cf-input-wrap">
-              <input id="cf-subject" name="subject" type="text" placeholder="Professional inquiry" minlength="3" maxlength="200" />
-              <span class="cf-focus-bar"></span>
-            </div>
-          </div>
-          <div class="cf-field">
-            <label for="cf-message">Message</label>
-            <div class="cf-input-wrap">
-              <textarea id="cf-message" name="message" rows="5" placeholder="Share the opportunity, context, and best way to follow up..." required minlength="10" maxlength="5000"></textarea>
-              <span class="cf-focus-bar"></span>
-            </div>
-          </div>
-          <button type="submit" class="cf-submit magnetic">
-            <span>Send Message</span>
-            <i class="fas fa-paper-plane" aria-hidden="true"></i>
-          </button>
-          <p class="cf-success" id="cfSuccess"><i class="fas fa-check-circle" aria-hidden="true"></i> Thanks, your message was submitted.</p>
-          <p class="cf-error"   id="cfError"><i class="fas fa-exclamation-circle" aria-hidden="true"></i> Something went wrong. Please email me directly.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand" id="footerName">Islem Rais</div>
-        <nav class="footer-nav">
+        <div class="nav-links" id="navLinks">
           <a href="#about">About</a>
           <a href="#expertise">Expertise</a>
+          <a href="#experience">Experience</a>
           <a href="#services">Services</a>
           <a href="#blog">Blog</a>
+          <a href="#privacy">Privacy</a>
           <a href="#contact">Contact</a>
-        </nav>
-        <div class="footer-socials">
-          <a id="footerLinkedin" href="https://www.linkedin.com/in/islem-rais" target="_blank" class="magnetic" aria-label="LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-          <a id="footerEmail" href="#contact" class="magnetic" aria-label="Go to contact form"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+        </div>
+        <div class="nav-actions">
+          <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><i data-lucide="sun-moon"></i></button>
+          <button class="menu-btn" id="menuBtn" aria-label="Open menu"><i data-lucide="menu"></i></button>
+          <a class="btn" href="#contact">Hire Me</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p id="footerCopy">&copy; 2026 Islem Rais &middot; Account Manager &middot; All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+    </nav>
 
-  <script src="data.js"></script>
-  <script src="render.js"></script>
-  <script src="script.js"></script>
+    <header class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Available for consulting</div>
+          <h1 id="heroHeadline"></h1>
+          <p class="lead" id="heroSubheadline"></p>
+          <p id="heroBio"></p>
+          <div class="hero-actions">
+            <a class="btn" href="#contact"><i data-lucide="send"></i> Hire Me</a>
+            <a class="btn secondary" href="#blog"><i data-lucide="newspaper"></i> Read Insights</a>
+          </div>
+          <div class="ad-slot" data-ad-slot="heroAd">
+            <!-- ADSENSE AD UNIT PLACEHOLDER: Hero Ad -->
+            <small>Hero Ad Slot - paste AdSense code in Admin > Ads Manager.</small>
+          </div>
+          <div class="stats-grid" id="statsGrid"></div>
+        </div>
+        <aside class="hero-panel profile-card">
+          <div class="avatar">IR</div>
+          <div>
+            <h2 style="font-size:1.7rem">Islem Rais</h2>
+            <p>Account Manager | Client Success & Revenue Growth | Fintech / Business Development</p>
+          </div>
+          <div class="profile-list">
+            <span><i data-lucide="map-pin"></i> Algeria</span>
+            <span><i data-lucide="briefcase-business"></i> Fintech, partnerships, retention, AML/KYC</span>
+            <span><i data-lucide="linkedin"></i> <a href="https://www.linkedin.com/in/islem-rais" target="_blank" rel="noopener">linkedin.com/in/islem-rais</a></span>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="about">
+        <div class="container two-col">
+          <div class="section-head">
+            <div class="eyebrow">About Me</div>
+            <h2>Client relationships that turn into measurable business results.</h2>
+          </div>
+          <div class="card">
+            <p id="aboutText"></p>
+            <p>I help organizations build stronger customer relationships, improve retention, and develop practical business development strategies across fintech and digital service environments.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="expertise">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">Expertise</div>
+            <h2>Skills, strengths, tools, and platforms.</h2>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h3>Skills & Expertise</h3>
+              <div class="skill-list" id="skillsList"></div>
+            </div>
+            <div>
+              <div class="card" style="margin-bottom:16px">
+                <h3>Tools & Platforms</h3>
+                <p>Operational stack for business development, client communication, content, and workflow management.</p>
+              </div>
+              <div class="tools-grid" id="toolsGrid"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">Experience</div>
+            <h2>Account management, retention, growth, and fintech partnerships.</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item card">
+              <h3>Account Manager & Client Success Professional</h3>
+              <p>Managed client relationships, supported retention programs, coordinated stakeholder communication, and used structured follow-up to improve satisfaction and revenue opportunities.</p>
+            </div>
+            <div class="timeline-item card">
+              <h3>Business Development & Partnerships</h3>
+              <p>Worked across customer needs, market opportunities, and partner conversations with a focus on practical execution and long-term relationship value.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="services">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">Services</div>
+            <h2>Consulting services for growth-focused teams.</h2>
+          </div>
+          <div class="card-grid" id="servicesGrid"></div>
+        </div>
+      </section>
+
+      <section class="section" id="blog">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">Blog</div>
+            <h2>Fintech, account management, and digital payments insights.</h2>
+          </div>
+          <div class="blog-grid" id="blogGrid"></div>
+        </div>
+      </section>
+
+      <section class="section alt" id="privacy">
+        <div class="container privacy">
+          <div class="section-head">
+            <div class="eyebrow">Privacy Policy</div>
+            <h2>Privacy, cookies, and advertising notice.</h2>
+          </div>
+          <div class="card">
+            <p>This website may collect basic contact information when visitors submit a form, such as name, email address, subject, and message. This information is used only to respond to inquiries and manage professional communication.</p>
+            <p>This website may display advertising placeholders and may later use Google AdSense. Third-party vendors, including Google, may use cookies to serve ads based on prior visits to this or other websites. Visitors can control cookies through their browser settings and Google's advertising settings.</p>
+            <p>No sensitive personal data is intentionally collected. External links, such as LinkedIn, are governed by their own privacy policies.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container contact-grid">
+          <div class="contact-box">
+            <div class="section-head">
+              <div class="eyebrow">Contact</div>
+              <h2>Start a conversation.</h2>
+            </div>
+            <div class="card">
+              <p>Open to consulting projects, fintech partnerships, client success roles, and business development conversations.</p>
+              <p><strong>Location:</strong> Algeria</p>
+              <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/islem-rais" target="_blank" rel="noopener">islem-rais</a></p>
+            </div>
+            <div class="ad-slot" data-ad-slot="sidebarAd">
+              <!-- ADSENSE AD UNIT PLACEHOLDER: Sidebar Ad -->
+              <small>Sidebar Ad Slot - paste AdSense code in Admin > Ads Manager.</small>
+            </div>
+          </div>
+          <form class="card contact-form" id="contactForm">
+            <div class="field"><label for="name">Name</label><input id="name" required placeholder="Your name" /></div>
+            <div class="field"><label for="email">Email</label><input id="email" type="email" required placeholder="you@company.com" /></div>
+            <div class="field"><label for="subject">Subject</label><input id="subject" placeholder="Consulting inquiry" /></div>
+            <div class="field"><label for="message">Message</label><textarea id="message" required placeholder="Tell me what you need help with..."></textarea></div>
+            <button class="btn" type="submit"><i data-lucide="send"></i> Send Message</button>
+            <p id="formStatus" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>&copy; 2026 Islem Rais. All rights reserved.</p>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="https://www.linkedin.com/in/islem-rais" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+    </footer>
+    <button class="hidden-admin-trigger" id="hiddenAdminBtn" aria-label="Open admin"></button>
+  </div>
+
+  <div class="admin-shell" id="adminShell">
+    <section class="login-screen">
+      <form class="login-card" id="loginForm">
+        <div class="admin-logo"><span class="brand-mark">IR</span><span>Portfolio Admin</span></div>
+        <p style="margin-bottom:18px">Enter the admin password to edit your site content.</p>
+        <div class="field"><label for="adminPassword">Password</label><input id="adminPassword" type="password" autocomplete="current-password" placeholder="Admin password" /></div>
+        <button class="btn" type="submit" style="margin-top:14px">Login</button>
+        <p id="loginError" style="color:#fca5a5;margin-top:12px"></p>
+      </form>
+    </section>
+
+    <section class="admin-app" id="adminApp">
+      <aside class="admin-sidebar">
+        <div class="admin-logo"><span class="brand-mark">IR</span><span>Admin Dashboard</span></div>
+        <nav class="admin-nav" id="adminTabs">
+          <button class="admin-tab active" data-tab="overview"><i data-lucide="layout-dashboard"></i> Overview</button>
+          <button class="admin-tab" data-tab="content"><i data-lucide="file-pen-line"></i> Content</button>
+          <button class="admin-tab" data-tab="ads"><i data-lucide="badge-dollar-sign"></i> Ads</button>
+          <button class="admin-tab" data-tab="appearance"><i data-lucide="palette"></i> Appearance</button>
+        </nav>
+      </aside>
+      <main class="admin-main">
+        <div class="admin-topbar">
+          <div>
+            <h1 style="font-size:2rem">Admin Dashboard</h1>
+            <p>LocalStorage-powered portfolio control center.</p>
+          </div>
+          <div class="admin-actions">
+            <button class="mini-btn" id="viewSiteBtn">View Site</button>
+            <button class="mini-btn danger" id="logoutBtn">Logout</button>
+          </div>
+        </div>
+
+        <section class="admin-section active" id="tab-overview">
+          <div class="admin-grid" id="overviewCards"></div>
+        </section>
+
+        <section class="admin-section" id="tab-content">
+          <div class="admin-card">
+            <h3>Hero & About Content</h3>
+            <div class="admin-form-grid">
+              <div class="field"><label>Hero Headline</label><input id="editHeroHeadline" /></div>
+              <div class="field"><label>Hero Subheadline</label><input id="editHeroSubheadline" /></div>
+              <div class="field"><label>Hero Bio</label><textarea id="editHeroBio"></textarea></div>
+              <div class="field"><label>About Text</label><textarea id="editAboutText"></textarea></div>
+            </div>
+            <div class="live-preview" style="margin-top:14px">
+              <strong>Live preview</strong>
+              <h2 id="previewHeadline" style="margin-top:8px"></h2>
+              <p id="previewSubheadline"></p>
+              <p id="previewBio"></p>
+            </div>
+            <button class="mini-btn primary" data-save="text" style="margin-top:14px">Save Text</button>
+          </div>
+
+          <div class="admin-card">
+            <h3>Stats</h3>
+            <div class="admin-form-grid" id="statsEditor"></div>
+            <button class="mini-btn primary" data-save="stats">Save Stats</button>
+          </div>
+
+          <div class="admin-card">
+            <h3>Skills & Expertise</h3>
+            <div class="admin-list" id="skillsEditor"></div>
+            <button class="mini-btn primary" id="addSkillBtn">Add Skill</button>
+          </div>
+
+          <div class="admin-card">
+            <h3>Tools & Platforms</h3>
+            <div class="admin-list" id="toolsEditor"></div>
+            <button class="mini-btn primary" id="addToolBtn">Add Tool</button>
+          </div>
+
+          <div class="admin-card">
+            <h3>Services</h3>
+            <div class="admin-list" id="servicesEditor"></div>
+            <button class="mini-btn primary" id="addServiceBtn">Add Service</button>
+          </div>
+
+          <div class="admin-card">
+            <h3>Blog Posts</h3>
+            <div class="admin-list" id="blogEditor"></div>
+            <button class="mini-btn primary" id="addBlogBtn">Add Blog Post</button>
+          </div>
+        </section>
+
+        <section class="admin-section" id="tab-ads">
+          <div class="admin-card">
+            <div class="switch-row">
+              <div>
+                <h3>Ads Manager</h3>
+                <p>Toggle ads sitewide and paste custom AdSense or HTML for each slot.</p>
+              </div>
+              <label class="switch"><input id="adsEnabled" type="checkbox" /><span class="slider"></span></label>
+            </div>
+          </div>
+          <div class="admin-list" id="adsEditor"></div>
+        </section>
+
+        <section class="admin-section" id="tab-appearance">
+          <div class="admin-card">
+            <h3>Appearance Manager</h3>
+            <div class="admin-form-grid">
+              <div class="field"><label>Primary Accent Color</label><input id="accentColor" type="color" /></div>
+              <div class="field"><label>Default Theme</label><select id="defaultTheme"><option value="dark">Dark</option><option value="light">Light</option></select></div>
+              <div class="field"><label>Hero Background Style</label><select id="heroBgStyle"><option value="gradient">Gradient</option><option value="solid">Solid</option><option value="image">Image URL</option></select></div>
+              <div class="field"><label>Hero Image URL</label><input id="heroImageUrl" placeholder="https://..." /></div>
+            </div>
+            <button class="mini-btn primary" data-save="appearance" style="margin-top:14px">Save Appearance</button>
+          </div>
+        </section>
+      </main>
+    </section>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "islem-rais-portfolio-v2";
+    const ADMIN_KEY = "islem-rais-admin-session";
+    const ADMIN_PASSWORD = "IR2026admin";
+    const DEFAULT_DATA = {
+      text: {
+        heroHeadline: "Account Manager driving client success, retention, and fintech growth.",
+        heroSubheadline: "Islem Rais helps businesses build stronger customer relationships, improve revenue outcomes, and create practical business development strategies.",
+        heroBio: "Account Manager | Client Success & Revenue Growth | Fintech / Business Development based in Algeria.",
+        aboutText: "I combine account management discipline, client success thinking, and business development execution to help organizations retain customers, grow relationships, and identify partnership opportunities in fintech and digital services."
+      },
+      stats: [
+        { label: "Years Experience", value: 4, suffix: "+" },
+        { label: "Clients Managed", value: 120, suffix: "+" },
+        { label: "Retention Rate", value: 95, suffix: "%" },
+        { label: "Revenue Growth", value: 35, suffix: "%" }
+      ],
+      skills: [
+        { name: "Client Success", value: 94 },
+        { name: "Account Management", value: 92 },
+        { name: "Revenue Growth", value: 86 },
+        { name: "Fintech Partnerships", value: 84 },
+        { name: "AML/KYC Advisory", value: 78 },
+        { name: "Business Development", value: 88 }
+      ],
+      tools: ["Google Workspace", "Canva", "GitHub", "Microsoft 365", "CRM tools", "Trello", "Notion"],
+      services: [
+        { title: "Business Development Strategy", description: "Market positioning, pipeline planning, partner outreach, and growth execution for fintech and B2B teams." },
+        { title: "Fintech Partnerships", description: "Support for partnership strategy, digital payments ecosystem mapping, stakeholder alignment, and opportunity development." },
+        { title: "AML/KYC Advisory", description: "Practical guidance on customer onboarding, compliance workflows, and risk-aware growth in regulated markets." }
+      ],
+      blog: [
+        { title: "Fintech Growth Opportunities in Algeria", date: "June 2026", excerpt: "A practical view of where Algerian fintech can grow through trust, partnerships, and customer education.", fullText: "Algeria's fintech ecosystem has room to grow through payment adoption, compliant onboarding, stronger partnerships, and user education. The biggest opportunities are often found where customer trust, business relationships, and practical execution meet." },
+        { title: "Account Management That Protects Revenue", date: "May 2026", excerpt: "Why retention, structured communication, and stakeholder mapping matter for sustainable B2B growth.", fullText: "Strong account management is not only about responding to requests. It requires understanding the client account, mapping stakeholders, tracking risk signals, creating growth plans, and building communication rhythms that protect revenue." },
+        { title: "Digital Payments in Algeria: What Businesses Should Watch", date: "April 2026", excerpt: "Digital payment adoption depends on trust, simplicity, regulation, and merchant readiness.", fullText: "For digital payments to scale, businesses need simple onboarding, reliable support, clear regulation, and customer confidence. Adoption improves when fintech teams make the value obvious for both merchants and end users." }
+      ],
+      ads: {
+        enabled: false,
+        slots: {
+          heroAd: "",
+          blogAd1: "",
+          blogAd2: "",
+          sidebarAd: ""
+        }
+      },
+      appearance: {
+        accent: "#3b82f6",
+        defaultTheme: "dark",
+        heroBgStyle: "gradient",
+        heroImageUrl: ""
+      }
+    };
+
+    let siteData = loadData();
+    let editingBlogIndex = null;
+    let editingServiceIndex = null;
+
+    function clone(obj) { return JSON.parse(JSON.stringify(obj)); }
+    function loadData() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        return saved ? deepMerge(clone(DEFAULT_DATA), saved) : clone(DEFAULT_DATA);
+      } catch {
+        return clone(DEFAULT_DATA);
+      }
+    }
+    function deepMerge(target, source) {
+      Object.keys(source || {}).forEach(key => {
+        if (source[key] && typeof source[key] === "object" && !Array.isArray(source[key])) {
+          target[key] = deepMerge(target[key] || {}, source[key]);
+        } else {
+          target[key] = source[key];
+        }
+      });
+      return target;
+    }
+    function saveData() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+      renderSite();
+      renderAdmin();
+    }
+
+    function applyAppearance() {
+      document.documentElement.style.setProperty("--accent", siteData.appearance.accent);
+      document.body.classList.toggle("theme-light", siteData.appearance.defaultTheme === "light");
+      const style = siteData.appearance.heroBgStyle;
+      const image = siteData.appearance.heroImageUrl;
+      let bg = "radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 28%, transparent), transparent 34%), linear-gradient(135deg, var(--bg), var(--bg-soft))";
+      if (style === "solid") bg = "var(--bg)";
+      if (style === "image" && image) bg = `linear-gradient(135deg, rgba(7,17,31,0.82), rgba(7,17,31,0.58)), url('${image}') center/cover`;
+      document.documentElement.style.setProperty("--hero-bg", bg);
+    }
+
+    function renderSite() {
+      applyAppearance();
+      document.getElementById("heroHeadline").textContent = siteData.text.heroHeadline;
+      document.getElementById("heroSubheadline").textContent = siteData.text.heroSubheadline;
+      document.getElementById("heroBio").textContent = siteData.text.heroBio;
+      document.getElementById("aboutText").textContent = siteData.text.aboutText;
+
+      document.getElementById("statsGrid").innerHTML = siteData.stats.map((stat, index) => `
+        <div class="stat-card">
+          <div class="stat-number" data-counter="${stat.value}" data-suffix="${stat.suffix || ""}">0${stat.suffix || ""}</div>
+          <p class="stat-label">${escapeHtml(stat.label)}</p>
+        </div>
+      `).join("");
+
+      document.getElementById("skillsList").innerHTML = siteData.skills.map(skill => `
+        <div class="skill-row">
+          <div class="skill-meta"><span>${escapeHtml(skill.name)}</span><span>${Number(skill.value)}%</span></div>
+          <div class="bar"><span data-width="${Number(skill.value)}%"></span></div>
+        </div>
+      `).join("");
+
+      document.getElementById("toolsGrid").innerHTML = siteData.tools.map(tool => `<div class="tool-chip">${escapeHtml(tool)}</div>`).join("");
+      document.getElementById("servicesGrid").innerHTML = siteData.services.map(service => `
+        <article class="card">
+          <div class="card-top"><h3>${escapeHtml(service.title)}</h3><span class="chip">Consulting</span></div>
+          <p>${escapeHtml(service.description)}</p>
+        </article>
+      `).join("");
+
+      document.getElementById("blogGrid").innerHTML = siteData.blog.map((post, index) => {
+        const card = `
+          <div class="card blog-card">
+            <article>
+              <div class="card-top"><span class="chip">${escapeHtml(post.date)}</span></div>
+              <h3>${escapeHtml(post.title)}</h3>
+              <p>${escapeHtml(post.excerpt)}</p>
+              <div class="blog-body"><p>${escapeHtml(post.fullText)}</p></div>
+              <button class="read-more" data-read="${index}">Read article</button>
+            </article>
+          </div>
+        `;
+        const ad1 = index === 0 ? `
+          <div class="ad-slot" data-ad-slot="blogAd1">
+            <!-- ADSENSE AD UNIT PLACEHOLDER: Blog Ad 1 -->
+            <small>Blog Ad Slot 1 - paste AdSense code in Admin > Ads Manager.</small>
+          </div>
+        ` : "";
+        const ad2 = index === 1 ? `
+          <div class="ad-slot" data-ad-slot="blogAd2">
+            <!-- ADSENSE AD UNIT PLACEHOLDER: Blog Ad 2 -->
+            <small>Blog Ad Slot 2 - paste AdSense code in Admin > Ads Manager.</small>
+          </div>
+        ` : "";
+        return card + ad1 + ad2;
+      }).join("");
+
+      renderAds();
+      requestAnimationFrame(() => {
+        animateCounters();
+        animateSkills();
+        if (window.lucide) window.lucide.createIcons();
+      });
+    }
+
+    function renderAds() {
+      document.querySelectorAll("[data-ad-slot]").forEach(slot => {
+        const key = slot.dataset.adSlot;
+        const code = siteData.ads.slots[key] || "";
+        slot.classList.toggle("visible", siteData.ads.enabled);
+        if (siteData.ads.enabled && code.trim()) slot.innerHTML = code;
+        if (siteData.ads.enabled && !code.trim()) {
+          slot.innerHTML = `<small>${labelForAd(key)} - paste AdSense code in Admin > Ads Manager.</small>`;
+        }
+      });
+    }
+
+    function animateCounters() {
+      document.querySelectorAll("[data-counter]").forEach(el => {
+        const target = Number(el.dataset.counter);
+        const suffix = el.dataset.suffix || "";
+        let current = 0;
+        const steps = 55;
+        const inc = target / steps;
+        const timer = setInterval(() => {
+          current += inc;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = `${Math.round(current)}${suffix}`;
+        }, 22);
+      });
+    }
+    function animateSkills() {
+      document.querySelectorAll("[data-width]").forEach(el => { el.style.width = el.dataset.width; });
+    }
+
+    function renderAdmin() {
+      renderOverview();
+      renderTextEditor();
+      renderStatsEditor();
+      renderSkillsEditor();
+      renderToolsEditor();
+      renderServicesEditor();
+      renderBlogEditor();
+      renderAdsEditor();
+      renderAppearanceEditor();
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function renderOverview() {
+      document.getElementById("overviewCards").innerHTML = [
+        ["Blog Posts", siteData.blog.length],
+        ["Services", siteData.services.length],
+        ["Skills", siteData.skills.length],
+        ["Ads", siteData.ads.enabled ? "On" : "Off"]
+      ].map(([label, value]) => `<div class="admin-card"><p>${label}</p><h2 style="margin-top:8px">${value}</h2></div>`).join("");
+    }
+    function renderTextEditor() {
+      setVal("editHeroHeadline", siteData.text.heroHeadline);
+      setVal("editHeroSubheadline", siteData.text.heroSubheadline);
+      setVal("editHeroBio", siteData.text.heroBio);
+      setVal("editAboutText", siteData.text.aboutText);
+      document.getElementById("previewHeadline").textContent = siteData.text.heroHeadline;
+      document.getElementById("previewSubheadline").textContent = siteData.text.heroSubheadline;
+      document.getElementById("previewBio").textContent = siteData.text.heroBio;
+    }
+    function renderStatsEditor() {
+      document.getElementById("statsEditor").innerHTML = siteData.stats.map((stat, i) => `
+        <div class="field"><label>${escapeHtml(stat.label)} Value</label><input type="number" data-stat-value="${i}" value="${Number(stat.value)}" /></div>
+        <div class="field"><label>${escapeHtml(stat.label)} Suffix</label><input data-stat-suffix="${i}" value="${escapeAttr(stat.suffix || "")}" /></div>
+      `).join("");
+    }
+    function renderSkillsEditor() {
+      document.getElementById("skillsEditor").innerHTML = siteData.skills.map((skill, i) => `
+        <div class="admin-list-item">
+          <div class="admin-form-grid">
+            <div class="field"><label>Name</label><input data-skill-name="${i}" value="${escapeAttr(skill.name)}" /></div>
+            <div class="field"><label>Percent</label><input type="number" min="0" max="100" data-skill-value="${i}" value="${Number(skill.value)}" /></div>
+          </div>
+          <div class="admin-actions"><button class="mini-btn primary" data-save-skill="${i}">Save</button><button class="mini-btn danger" data-delete-skill="${i}">Delete</button></div>
+        </div>
+      `).join("");
+    }
+    function renderToolsEditor() {
+      document.getElementById("toolsEditor").innerHTML = siteData.tools.map((tool, i) => `
+        <div class="admin-list-item">
+          <div class="field"><label>Tool</label><input data-tool="${i}" value="${escapeAttr(tool)}" /></div>
+          <div class="admin-actions"><button class="mini-btn primary" data-save-tool="${i}">Save</button><button class="mini-btn danger" data-delete-tool="${i}">Delete</button></div>
+        </div>
+      `).join("");
+    }
+    function renderServicesEditor() {
+      document.getElementById("servicesEditor").innerHTML = siteData.services.map((service, i) => `
+        <div class="admin-list-item">
+          <div class="admin-form-grid">
+            <div class="field"><label>Title</label><input data-service-title="${i}" value="${escapeAttr(service.title)}" /></div>
+            <div class="field"><label>Description</label><textarea data-service-description="${i}">${escapeHtml(service.description)}</textarea></div>
+          </div>
+          <div class="admin-actions"><button class="mini-btn primary" data-save-service="${i}">Save</button><button class="mini-btn danger" data-delete-service="${i}">Delete</button></div>
+        </div>
+      `).join("");
+    }
+    function renderBlogEditor() {
+      document.getElementById("blogEditor").innerHTML = siteData.blog.map((post, i) => `
+        <div class="admin-list-item">
+          <div class="admin-form-grid">
+            <div class="field"><label>Title</label><input data-blog-title="${i}" value="${escapeAttr(post.title)}" /></div>
+            <div class="field"><label>Date</label><input data-blog-date="${i}" value="${escapeAttr(post.date)}" /></div>
+            <div class="field"><label>Excerpt</label><textarea data-blog-excerpt="${i}">${escapeHtml(post.excerpt)}</textarea></div>
+            <div class="field"><label>Full Text</label><textarea data-blog-full="${i}">${escapeHtml(post.fullText)}</textarea></div>
+          </div>
+          <div class="admin-actions"><button class="mini-btn primary" data-save-blog="${i}">Save</button><button class="mini-btn danger" data-delete-blog="${i}">Delete</button></div>
+        </div>
+      `).join("");
+    }
+    function renderAdsEditor() {
+      document.getElementById("adsEnabled").checked = siteData.ads.enabled;
+      const slots = Object.keys(siteData.ads.slots);
+      document.getElementById("adsEditor").innerHTML = slots.map(key => `
+        <div class="admin-card">
+          <h3>${labelForAd(key)}</h3>
+          <div class="field"><label>AdSense / HTML Code</label><textarea data-ad-code="${key}" placeholder="Paste ad unit code here">${escapeHtml(siteData.ads.slots[key] || "")}</textarea></div>
+          <button class="mini-btn primary" data-save-ad="${key}">Save Ad Slot</button>
+          <div class="ad-preview" data-ad-preview="${key}" style="margin-top:12px">${siteData.ads.slots[key] || "Preview appears here"}</div>
+        </div>
+      `).join("");
+    }
+    function renderAppearanceEditor() {
+      setVal("accentColor", siteData.appearance.accent);
+      setVal("defaultTheme", siteData.appearance.defaultTheme);
+      setVal("heroBgStyle", siteData.appearance.heroBgStyle);
+      setVal("heroImageUrl", siteData.appearance.heroImageUrl);
+    }
+
+    function bindEvents() {
+      document.getElementById("menuBtn").addEventListener("click", () => document.getElementById("navLinks").classList.toggle("open"));
+      document.getElementById("themeToggle").addEventListener("click", () => {
+        siteData.appearance.defaultTheme = document.body.classList.contains("theme-light") ? "dark" : "light";
+        saveData();
+      });
+      document.getElementById("hiddenAdminBtn").addEventListener("click", () => location.hash = "admin");
+      window.addEventListener("hashchange", handleHash);
+      document.getElementById("contactForm").addEventListener("submit", e => {
+        e.preventDefault();
+        document.getElementById("formStatus").textContent = "Thanks. Your message is ready to be sent through your preferred contact setup.";
+        e.currentTarget.reset();
+      });
+      document.addEventListener("click", handleGlobalClicks);
+      document.getElementById("loginForm").addEventListener("submit", e => {
+        e.preventDefault();
+        const pass = document.getElementById("adminPassword").value;
+        if (pass !== ADMIN_PASSWORD) {
+          document.getElementById("loginError").textContent = "Incorrect password.";
+          return;
+        }
+        sessionStorage.setItem(ADMIN_KEY, "true");
+        document.getElementById("adminShell").classList.add("admin-authed");
+        renderAdmin();
+      });
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        sessionStorage.removeItem(ADMIN_KEY);
+        document.getElementById("adminShell").classList.remove("admin-authed");
+      });
+      document.getElementById("viewSiteBtn").addEventListener("click", () => { location.hash = "home"; });
+      document.getElementById("adminTabs").addEventListener("click", e => {
+        const btn = e.target.closest("[data-tab]");
+        if (!btn) return;
+        document.querySelectorAll(".admin-tab").forEach(tab => tab.classList.remove("active"));
+        document.querySelectorAll(".admin-section").forEach(section => section.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(`tab-${btn.dataset.tab}`).classList.add("active");
+      });
+      ["editHeroHeadline", "editHeroSubheadline", "editHeroBio"].forEach(id => {
+        document.getElementById(id).addEventListener("input", () => {
+          document.getElementById("previewHeadline").textContent = getVal("editHeroHeadline");
+          document.getElementById("previewSubheadline").textContent = getVal("editHeroSubheadline");
+          document.getElementById("previewBio").textContent = getVal("editHeroBio");
+        });
+      });
+      document.getElementById("adsEnabled").addEventListener("change", e => {
+        siteData.ads.enabled = e.target.checked;
+        saveData();
+      });
+    }
+
+    function handleGlobalClicks(e) {
+      const read = e.target.closest("[data-read]");
+      if (read) read.closest(".blog-card").classList.toggle("open");
+
+      const saveType = e.target.closest("[data-save]");
+      if (saveType) saveByType(saveType.dataset.save);
+
+      const saveSkill = e.target.closest("[data-save-skill]");
+      if (saveSkill) {
+        const i = Number(saveSkill.dataset.saveSkill);
+        siteData.skills[i] = { name: document.querySelector(`[data-skill-name="${i}"]`).value, value: Number(document.querySelector(`[data-skill-value="${i}"]`).value) };
+        saveData();
+      }
+      const deleteSkill = e.target.closest("[data-delete-skill]");
+      if (deleteSkill) { siteData.skills.splice(Number(deleteSkill.dataset.deleteSkill), 1); saveData(); }
+      const saveTool = e.target.closest("[data-save-tool]");
+      if (saveTool) { const i = Number(saveTool.dataset.saveTool); siteData.tools[i] = document.querySelector(`[data-tool="${i}"]`).value; saveData(); }
+      const deleteTool = e.target.closest("[data-delete-tool]");
+      if (deleteTool) { siteData.tools.splice(Number(deleteTool.dataset.deleteTool), 1); saveData(); }
+      const saveService = e.target.closest("[data-save-service]");
+      if (saveService) {
+        const i = Number(saveService.dataset.saveService);
+        siteData.services[i] = { title: document.querySelector(`[data-service-title="${i}"]`).value, description: document.querySelector(`[data-service-description="${i}"]`).value };
+        saveData();
+      }
+      const deleteService = e.target.closest("[data-delete-service]");
+      if (deleteService) { siteData.services.splice(Number(deleteService.dataset.deleteService), 1); saveData(); }
+      const saveBlog = e.target.closest("[data-save-blog]");
+      if (saveBlog) {
+        const i = Number(saveBlog.dataset.saveBlog);
+        siteData.blog[i] = {
+          title: document.querySelector(`[data-blog-title="${i}"]`).value,
+          date: document.querySelector(`[data-blog-date="${i}"]`).value,
+          excerpt: document.querySelector(`[data-blog-excerpt="${i}"]`).value,
+          fullText: document.querySelector(`[data-blog-full="${i}"]`).value
+        };
+        saveData();
+      }
+      const deleteBlog = e.target.closest("[data-delete-blog]");
+      if (deleteBlog) { siteData.blog.splice(Number(deleteBlog.dataset.deleteBlog), 1); saveData(); }
+      const saveAd = e.target.closest("[data-save-ad]");
+      if (saveAd) { const key = saveAd.dataset.saveAd; siteData.ads.slots[key] = document.querySelector(`[data-ad-code="${key}"]`).value; saveData(); }
+
+      if (e.target.closest("#addSkillBtn")) { siteData.skills.push({ name: "New Skill", value: 70 }); saveData(); }
+      if (e.target.closest("#addToolBtn")) { siteData.tools.push("New Tool"); saveData(); }
+      if (e.target.closest("#addServiceBtn")) { siteData.services.push({ title: "New Service", description: "Describe this service." }); saveData(); }
+      if (e.target.closest("#addBlogBtn")) { siteData.blog.push({ title: "New Blog Post", date: "Draft", excerpt: "Short excerpt.", fullText: "Full article text." }); saveData(); }
+    }
+
+    function saveByType(type) {
+      if (type === "text") {
+        siteData.text.heroHeadline = getVal("editHeroHeadline");
+        siteData.text.heroSubheadline = getVal("editHeroSubheadline");
+        siteData.text.heroBio = getVal("editHeroBio");
+        siteData.text.aboutText = getVal("editAboutText");
+      }
+      if (type === "stats") {
+        siteData.stats = siteData.stats.map((stat, i) => ({
+          ...stat,
+          value: Number(document.querySelector(`[data-stat-value="${i}"]`).value),
+          suffix: document.querySelector(`[data-stat-suffix="${i}"]`).value
+        }));
+      }
+      if (type === "appearance") {
+        siteData.appearance.accent = getVal("accentColor");
+        siteData.appearance.defaultTheme = getVal("defaultTheme");
+        siteData.appearance.heroBgStyle = getVal("heroBgStyle");
+        siteData.appearance.heroImageUrl = getVal("heroImageUrl");
+      }
+      saveData();
+    }
+
+    function handleHash() {
+      const adminMode = location.hash.replace("#", "") === "admin";
+      document.body.classList.toggle("admin-active", adminMode);
+      if (adminMode && sessionStorage.getItem(ADMIN_KEY) === "true") {
+        document.getElementById("adminShell").classList.add("admin-authed");
+        renderAdmin();
+      }
+      if (!adminMode) document.getElementById("adminShell").classList.remove("admin-authed");
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function getVal(id) { return document.getElementById(id).value; }
+    function setVal(id, value) { const el = document.getElementById(id); if (el) el.value = value || ""; }
+    function labelForAd(key) {
+      return ({ heroAd: "Hero Ad", blogAd1: "Blog Ad 1", blogAd2: "Blog Ad 2", sidebarAd: "Sidebar Ad" })[key] || key;
+    }
+    function escapeHtml(value = "") {
+      return String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[char]);
+    }
+    function escapeAttr(value = "") { return escapeHtml(value).replace(/`/g, "&#096;"); }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderSite();
+      renderAdmin();
+      bindEvents();
+      handleHash();
+    });
+  </script>
 </body>
 </html>
