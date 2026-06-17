@@ -555,6 +555,41 @@ function initSmoothPageTransitions() {
 // See README.md for setup instructions
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzjmoKmL_Bxtys44X6bR26wCSZPOtu4C8gM5NXbNocXG_QoYK9KK4wpLvVTUzCnqJDDhg/exec';
 
+// Form validation helper functions
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function validateFormData(name, email, subject, message) {
+  const errors = [];
+  
+  if (!name || name.length < 2 || name.length > 100) {
+    errors.push('Name must be between 2 and 100 characters');
+  }
+  
+  if (!email || !validateEmail(email)) {
+    errors.push('Please provide a valid email address');
+  }
+  
+  if (subject && subject.length > 200) {
+    errors.push('Subject must not exceed 200 characters');
+  }
+  
+  if (!message || message.length < 10 || message.length > 5000) {
+    errors.push('Message must be between 10 and 5000 characters');
+  }
+  
+  // Check for common spam patterns
+  const spamKeywords = ['casino', 'lottery', 'viagra', 'bitcoin', 'click here', 'buy now'];
+  const lowercaseMessage = message.toLowerCase();
+  if (spamKeywords.some(keyword => lowercaseMessage.includes(keyword))) {
+    errors.push('Your message contains restricted content');
+  }
+  
+  return errors;
+}
+
 async function handleSubmit(e) {
   e.preventDefault();
   const form   = e.target;
@@ -567,6 +602,21 @@ async function handleSubmit(e) {
   const email    = form.querySelector('[name="email"]').value.trim();
   const subject  = form.querySelector('[name="subject"]').value.trim();
   const message  = form.querySelector('[name="message"]').value.trim();
+
+  // Validate form data
+  const validationErrors = validateFormData(name, email, subject, message);
+  if (validationErrors.length > 0) {
+    btn.innerHTML = '<span>Validation Error</span><i class="fas fa-exclamation-circle"></i>';
+    if (errorEl) {
+      errorEl.textContent = validationErrors[0];
+      errorEl.style.display = 'block';
+      setTimeout(() => { 
+        errorEl.style.display = 'none';
+        btn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+      }, 3500);
+    }
+    return;
+  }
 
   // Loading state
   btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
@@ -609,6 +659,7 @@ async function handleSubmit(e) {
     btn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
     btn.disabled  = false;
     if (errorEl) {
+      errorEl.textContent = 'Failed to send message. Please try again.';
       errorEl.style.display = 'block';
       setTimeout(() => { errorEl.style.display = 'none'; }, 3500);  // Reduced from 6000 to 3500ms
     }

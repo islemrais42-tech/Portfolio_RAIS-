@@ -214,19 +214,19 @@
             <p>Currently open to full-time and consulting opportunities.</p>
           </div>
         </div>
-        <form class="contact-form stagger-item" onsubmit="handleSubmit(event)">
+        <form class="contact-form stagger-item" onsubmit="handleSubmit(event)" novalidate>
           <div class="cf-row">
             <div class="cf-field">
               <label for="cf-name">Full Name</label>
               <div class="cf-input-wrap">
-                <input id="cf-name" name="name" type="text" placeholder="John Smith" required autocomplete="name" />
+                <input id="cf-name" name="name" type="text" placeholder="John Smith" required minlength="2" maxlength="100" autocomplete="name" />
                 <span class="cf-focus-bar"></span>
               </div>
             </div>
             <div class="cf-field">
               <label for="cf-email">Email Address</label>
               <div class="cf-input-wrap">
-                <input id="cf-email" name="email" type="email" placeholder="john@company.com" required autocomplete="email" />
+                <input id="cf-email" name="email" type="email" placeholder="john@company.com" required maxlength="254" autocomplete="email" />
                 <span class="cf-focus-bar"></span>
               </div>
             </div>
@@ -234,14 +234,14 @@
           <div class="cf-field">
             <label for="cf-subject">Subject</label>
             <div class="cf-input-wrap">
-              <input id="cf-subject" name="subject" type="text" placeholder="Professional inquiry" />
+              <input id="cf-subject" name="subject" type="text" placeholder="Professional inquiry" minlength="3" maxlength="200" />
               <span class="cf-focus-bar"></span>
             </div>
           </div>
           <div class="cf-field">
             <label for="cf-message">Message</label>
             <div class="cf-input-wrap">
-              <textarea id="cf-message" name="message" rows="5" placeholder="Share the opportunity, context, and best way to follow up..." required></textarea>
+              <textarea id="cf-message" name="message" rows="5" placeholder="Share the opportunity, context, and best way to follow up..." required minlength="10" maxlength="5000"></textarea>
               <span class="cf-focus-bar"></span>
             </div>
           </div>
