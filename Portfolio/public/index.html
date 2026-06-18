@@ -152,6 +152,7 @@
       display: grid;
       align-items: center;
       overflow: hidden;
+      color: #f8fafc;
       background: var(--hero-bg, radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 28%, transparent), transparent 34%), linear-gradient(135deg, var(--bg), var(--bg-soft)));
     }
     .hero::after {
@@ -164,14 +165,34 @@
     }
     .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 38px; align-items: center; padding: 70px 0; }
     .hero-copy { display: grid; gap: 22px; }
+    .hero h1,
+    .hero h2,
+    .hero h3 {
+      color: #f8fafc;
+    }
+    .hero p,
+    .hero .lead {
+      color: rgba(226, 232, 240, 0.78);
+    }
     .hero-copy strong { color: var(--accent-2); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero .btn.secondary {
+      color: #f8fafc;
+      border-color: rgba(226, 232, 240, 0.24);
+      background: rgba(15, 23, 42, 0.22);
+    }
+    .hero .btn.secondary:hover {
+      border-color: rgba(226, 232, 240, 0.42);
+      background: rgba(15, 23, 42, 0.38);
+    }
     .hero-panel {
-      background: color-mix(in srgb, var(--panel) 88%, transparent);
-      border: 1px solid var(--line);
+      color: #f8fafc;
+      background: rgba(15, 28, 49, 0.9);
+      border: 1px solid rgba(226, 232, 240, 0.16);
       border-radius: var(--radius);
       padding: 24px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
     }
     .profile-card { display: grid; gap: 18px; }
     .avatar {
@@ -186,7 +207,11 @@
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
     }
     .profile-list { display: grid; gap: 11px; }
-    .profile-list span { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 0.92rem; }
+    .hero-panel p,
+    .profile-list span {
+      color: rgba(226, 232, 240, 0.78);
+    }
+    .profile-list span { display: flex; align-items: center; gap: 10px; font-size: 0.92rem; }
     .ad-slot {
       display: none;
       width: 100%;
@@ -823,8 +848,8 @@
       document.body.classList.toggle("theme-light", siteData.appearance.defaultTheme === "light");
       const style = siteData.appearance.heroBgStyle;
       const image = siteData.appearance.heroImageUrl;
-      let bg = "radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 28%, transparent), transparent 34%), linear-gradient(135deg, var(--bg), var(--bg-soft))";
-      if (style === "solid") bg = "var(--bg)";
+      let bg = "radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 28%, transparent), transparent 34%), linear-gradient(135deg, #07111f, #0d1a2d)";
+      if (style === "solid") bg = "#07111f";
       if (style === "image" && image) bg = `linear-gradient(135deg, rgba(7,17,31,0.82), rgba(7,17,31,0.58)), url('${image}') center/cover`;
       document.documentElement.style.setProperty("--hero-bg", bg);
     }
