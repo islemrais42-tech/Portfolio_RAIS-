@@ -626,11 +626,15 @@
               <small>Sidebar Ad Slot - paste AdSense code in Admin > Ads Manager.</small>
             </div>
           </div>
-          <form class="card contact-form" id="contactForm">
+          <form class="card contact-form" id="contactForm" action="https://formsubmit.co/islemrais42@gmail.com" method="POST">
             <div class="field"><label for="name">Name</label><input id="name" name="name" required minlength="2" maxlength="100" placeholder="Your name" autocomplete="name" /></div>
             <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required maxlength="254" placeholder="you@company.com" autocomplete="email" /></div>
             <div class="field"><label for="subject">Subject</label><input id="subject" name="subject" maxlength="200" placeholder="Consulting inquiry" /></div>
             <div class="field"><label for="message">Message</label><textarea id="message" name="message" required minlength="10" maxlength="5000" placeholder="Tell me what you need help with..."></textarea></div>
+            <input type="hidden" name="_subject" id="formSubmitSubject" value="New portfolio message" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://islemrais42-tech.github.io/Portfolio_RAIS-/#contact" />
             <button class="btn" type="submit" id="contactSubmit"><i data-lucide="send"></i> Send Message</button>
             <p id="formStatus" aria-live="polite"></p>
           </form>
@@ -766,9 +770,7 @@
     const STORAGE_KEY = "islem-rais-portfolio-v2";
     const ADMIN_KEY = "islem-rais-admin-session";
     const ADMIN_PASSWORD = "IR2026admin";
-    const CONTACT_EMAIL = "islemrais42@gmail.com";
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzjmoKmL_Bxtys44X6bR26wCSZPOtu4C8gM5NXbNocXG_QoYK9KK4wpLvVTUzCnqJDDhg/exec";
-    const EMAIL_SERVICE_URL = "https://formsubmit.co/ajax/islemrais42@gmail.com";
     const DEFAULT_DATA = {
       text: {
         heroHeadline: "Account Manager driving client success, retention, and fintech growth.",
@@ -1187,7 +1189,6 @@
       e.preventDefault();
       const form = e.currentTarget;
       const submit = document.getElementById("contactSubmit");
-      const status = document.getElementById("formStatus");
       const payload = {
         name: getVal("name").trim(),
         email: getVal("email").trim(),
@@ -1211,13 +1212,14 @@
       }
 
       submit.disabled = true;
-      submit.innerHTML = '<i data-lucide="loader-circle"></i> Sending...';
-      showFormStatus("Sending your message...", "info");
+      submit.innerHTML = '<i data-lucide="loader-circle"></i> Opening secure send page...';
+      showFormStatus("Opening secure send page...", "info");
       if (window.lucide) window.lucide.createIcons();
+      document.getElementById("formSubmitSubject").value = payload.subject;
 
       try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        const timeoutId = setTimeout(() => controller.abort(), 3500);
 
         await fetch(APPS_SCRIPT_URL, {
           method: "POST",
@@ -1229,59 +1231,17 @@
         });
 
         clearTimeout(timeoutId);
-        await sendEmailNotification(payload);
-        form.reset();
-        showFormStatus("Message sent. I will reply by email as soon as possible.", "success");
       } catch (err) {
-        const mailto = buildMailto(payload);
-        showFormStatus(`Could not send automatically. Please email me directly: ${mailto}`, "error", true);
-        console.error("Contact form error:", err.message);
-      } finally {
-        submit.disabled = false;
-        submit.innerHTML = '<i data-lucide="send"></i> Send Message';
-        if (window.lucide) window.lucide.createIcons();
+        console.warn("Contact log backup failed:", err.message);
       }
+
+      HTMLFormElement.prototype.submit.call(form);
     }
 
     function showFormStatus(message, type = "info", isHtml = false) {
       const status = document.getElementById("formStatus");
       status.style.color = type === "success" ? "#5eead4" : type === "error" ? "#fca5a5" : "var(--muted)";
       status[isHtml ? "innerHTML" : "textContent"] = message;
-    }
-
-    async function sendEmailNotification(payload) {
-      const response = await fetch(EMAIL_SERVICE_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          name: payload.name,
-          email: payload.email,
-          _replyto: payload.email,
-          _subject: payload.subject,
-          _captcha: "false",
-          message: payload.message,
-          source: payload.source,
-          timestamp: payload.timestamp
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error("Email service did not accept the submission.");
-      }
-
-      const result = await response.json().catch(() => null);
-      if (result && String(result.success).toLowerCase() === "false") {
-        throw new Error(result.message || "Email service rejected the submission.");
-      }
-    }
-
-    function buildMailto(payload) {
-      const subject = encodeURIComponent(payload.subject);
-      const body = encodeURIComponent(`Name: ${payload.name}\nEmail: ${payload.email}\n\n${payload.message}`);
-      return `<a href="mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}">${CONTACT_EMAIL}</a>`;
     }
 
     function isValidEmail(email) {
